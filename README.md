@@ -1,9 +1,9 @@
 # webclient
 
-Instructions
+### Instructions
 
-`npm install` - install dependencies
+`npm install` - install dependencies  
 `npm start` - start local web-server
 
-Optional - on deploy
+### Optional - on deploy
 `npm run build` - to build project
