@@ -1,0 +1,13 @@
+.dev-frame {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  .dev-tool {
+    box-sizing: border-box;
+    padding: 16px;
+    background-color: rgba(255, 103, 181, 0.3);
+    pre {
+      margin: 8px 0;
+    }
+  }
+}

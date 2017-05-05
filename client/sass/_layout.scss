@@ -1,0 +1,19 @@
+.page-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.flex {
+  position: relative;
+  display: flex;
+  .test-list {
+    flex-grow: 1;
+  }
+  .side-bar {
+    //box-sizing: border-box;
+    //background-color: white;
+    min-width: 340px;
+    margin-left: 32px;
+  }
+}

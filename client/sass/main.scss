@@ -1,3 +1,170 @@
-h1 {
-  color: hotpink;
+$blue: #3EB7C1;
+$green: #85f9d1;
+$violet: #A76498;
+$green-pale: #E4EAE7;
+$beige: #F3F2EC;
+$copy-text: #353535;
+
+@import "dev-tool";
+@import "test";
+@import "layout";
+@import "header";
+@import "icons";
+
+.dev-min-height {
+  min-height: 300px;
+}
+
+body {
+  margin: 0;
+  background-color: $beige;
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3 {
+  font-weight: 300;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:visited {
+    color: inherit;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  //background-color: rgba(255, 81, 120, 0.16);
+  border-spacing: 0;
+  margin-bottom: 16px;
+  th {
+    font-weight: 400;
+    text-align: left;
+    background-color: #f6f6f6;
+    padding: 16px;
+  }
+  tbody {
+    td {
+      border-bottom: 1px solid $beige;
+      padding: 16px;
+      color: $copy-text;
+    }
+  }
+}
+
+select {
+  background-color: $violet;
+  color: white;
+  -webkit-appearance: none;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 2px;
+  width: 100%;
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
+}
+
+.card {
+  padding: 32px;
+  margin: 16px 0;
+  border-radius: 2px;
+  background-color: white;
+  .main {
+    flex-grow: 3;
+    //background-color: rgba(167, 100, 152, 0.15);
+  }
+  .side {
+    flex-grow: 1;
+    //background-color: rgba(93, 185, 153, 0.15);
+    padding-left: 16px;
+    margin-left: 16px;
+    border-left: 1px solid #dedede;
+  }
+}
+
+.send-email {
+  margin-top: -16px;
+  margin-bottom: 16px;
+  div {
+    flex-grow: 1;
+  }
+  .my-email {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    text-align: center;
+    background-color: $violet;
+    color: white;
+    cursor: pointer;
+  }
+  .other-email {
+    display: flex;
+    background-color: $blue;
+    padding: 16px;
+    input {
+      width: 100%;
+      border: none;
+      padding: 16px;
+      background-color: #3cabb5;
+      color: white;
+      font-size: inherit;
+      font-weight: 300;
+      &:focus {
+        outline: none;
+      }
+      &::-webkit-input-placeholder {
+        color: white;
+      }
+    }
+    button {
+      border: none;
+      background-color: white;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.show-more-container {
+  position: relative;
+  background-color: #00A000;
+  text-align: center;
+}
+
+.btn {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &.show-more {
+    position: absolute;
+    bottom: -50px;
+    min-width: 100px;
+    left: calc(50% - 50px);
+    padding: 12px 16px;
+    border-radius: 24px;
+    border: 1px solid $violet;
+    background-color: white;
+    color: $violet;
+    transition: all 300ms;
+    &:hover {
+      background-color: $violet;
+      color: white;
+    }
+  }
 }
