@@ -1,9 +1,10 @@
-import './sass/main.scss';
+import  './sass/main.scss';
 import React from 'react';
 import { render } from 'react-dom';
 
-const App = () => (
-  <h1>Wital</h1>
-);
+import App from './layouts/App';
 
-render(<App/>, document.getElementById('react-root'));
+render(
+  <App/>,
+  document.getElementById('react-root')
+);
