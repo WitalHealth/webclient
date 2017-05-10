@@ -4,6 +4,7 @@
   "description": "Wital webclient",
   "main": "index.js",
   "scripts": {
+    "bad": "npm run build && git commit -a -m 'New build created' && echo 'New build created' && git push && echo 'do curl'",
     "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress",
     "build": "node_modules/webpack/bin/webpack.js"
   },
