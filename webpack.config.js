@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   entry: __dirname + '/client/index.js',
   output: {
-    path: __dirname + '/build',
+    path: __dirname + '/dist',
     filename: 'bundle.js',
     publicPath: '/'
   },
@@ -12,7 +12,7 @@ module.exports = {
     inline: true,
     historyApiFallback: true,
     port: 3000,
-    contentBase: __dirname + '/build'
+    contentBase: __dirname + '/dist'
   },
   module: {
     rules: [
