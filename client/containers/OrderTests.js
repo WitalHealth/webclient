@@ -38,7 +38,7 @@ class OrderTests extends Component {
           <div className="flex">
             <div className="test-list">
               {
-                !tests.length ?
+                tests.length ?
                   <div className="test-inner">
                     <CSSTransitionGroup
                       transitionName="test-fade"
