@@ -32,9 +32,6 @@ button.btn {
     &:hover {
       background-color: #fafafa;
     }
-    &:active {
-      transform: scale(0.98);
-    }
     .desc {
       //flex-grow: 1;
       span {
@@ -66,6 +63,9 @@ button.btn {
         background-color: $violet;
         color: white;
       }
+      &:active {
+        transform: scale(0.98);
+      }
     }
   }
 }
@@ -89,7 +89,6 @@ button.btn {
       padding: 16px 8px;
       border-bottom: 1px solid #f4f4f4;
       min-width: 300px;
-      //overflow: hidden;
       transition: all 200ms;
       .remove {
         position: absolute;

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { get } from 'axios';
-import { DevFrame, DevTool } from '../components/DevTool';
+import { Link } from 'react-router-dom';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
-import { StickyContainer, Sticky } from 'react-sticky';
+
+import { DevFrame, DevTool } from '../components/DevTool';
+import LoadingIndicator from '../components/LoadingIndicator';
 const removeIcon = require('../assets/images/error.png');
 
 class OrderTests extends Component {
@@ -23,6 +25,7 @@ class OrderTests extends Component {
 
   render() {
     const { tests, cart, totalCount } = this.state;
+    const { match } = this.props;
 
     return (
       <div className="scroll-container" onWheel={() => this.handleFixed()}>
@@ -34,29 +37,33 @@ class OrderTests extends Component {
 
           <div className="flex">
             <div className="test-list">
-              <div className="test-inner">
-                <CSSTransitionGroup
-                  transitionName="test-fade"
-                  transitionEnterTimeout={400}
-                  transitionLeaveTimeout={400}
-                >
-                  {
-                    tests.map((test, i) =>
-                      this.notInCart(test) &&
-                      <div className="test" key={test.id} onClick={() => this.addToCart(test)}>
-                        <div className="test-inner">
-                          <div className="desc">
-                            <h3>{test.custName}</h3>
-                            <span>{test.description ? test.description : 'ingen beskrvning tillgänglig'} </span>
+              {
+                !tests.length ?
+                  <div className="test-inner">
+                    <CSSTransitionGroup
+                      transitionName="test-fade"
+                      transitionEnterTimeout={400}
+                      transitionLeaveTimeout={400}
+                    >
+                      {
+                        tests.map((test, i) =>
+                          this.notInCart(test) &&
+                          <div className="test" key={test.id}>
+                            <div className="test-inner">
+                              <div className="desc">
+                                <h3><Link to={`/prov/${test.custName}`}>{test.custName}</Link></h3>
+                                <span>{test.description ? test.description : 'ingen beskrvning tillgänglig'} </span>
+                              </div>
+                              <div className="price"> {test.valueScript ? test.valueScript : '29:-'}</div>
+                              <button onClick={() => this.addToCart(test)}>Lägg till</button>
+                            </div>
                           </div>
-                          <div className="price"> {test.valueScript ? test.valueScript : '29:-'}</div>
-                          <button>Lägg till</button>
-                        </div>
-                      </div>
-                    )
-                  }
-                </CSSTransitionGroup>
-              </div>
+                        )
+                      }
+                    </CSSTransitionGroup>
+                  </div>
+                  : <LoadingIndicator message="Hämtar våra prover"/>
+              }
             </div>
             {/*<StickyContainer>*/}
             <div id="side-bar" className="side-bar">
@@ -102,7 +109,7 @@ class OrderTests extends Component {
   }
 
   handleFixed() {
-    if ( window.scrollY > 90 + 16 ) {
+    if ( window.scrollY > 62 + 32 ) {
       this.cart.style.position = 'fixed';
     } else {
       this.cart.style.position = 'static';

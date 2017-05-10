@@ -13,6 +13,7 @@ const App = () => (
     <div>
       <Route component={Header}/>
       <Route exact path="/" component={OrderTests}/>
+      <Route path="/prov/:name" render={({match}) => <h1>{match.params.name}</h1>}/>
       <Route path="/resultat" render={() => <h1>Resultat</h1>}/>
       <Route path="/provguiden" render={() => <h1>Provguiden</h1>}/>
       <Route path="/meddelanden" render={() => <h1>Meddelanden</h1>}/>
