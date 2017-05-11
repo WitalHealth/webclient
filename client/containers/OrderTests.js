@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { get } from 'axios';
-import { Link } from 'react-router-dom';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+const removeIcon = require('../assets/images/error.png');
 
 import { DevFrame, DevTool } from '../components/DevTool';
 import LoadingIndicator from '../components/LoadingIndicator';
-const removeIcon = require('../assets/images/error.png');
+import Test from '../components/Test';
 
 class OrderTests extends Component {
   state = {
@@ -48,16 +48,11 @@ class OrderTests extends Component {
                       {
                         tests.map((test, i) =>
                           this.notInCart(test) &&
-                          <div className="test" key={test.id}>
-                            <div className="test-inner">
-                              <div className="desc">
-                                <h3><Link to={`/prov/${test.custName}`}>{test.custName}</Link></h3>
-                                <span>{test.description ? test.description : 'ingen beskrvning tillgänglig'} </span>
-                              </div>
-                              <div className="price"> {test.valueScript ? test.valueScript : '29:-'}</div>
-                              <button onClick={() => this.addToCart(test)}>Lägg till</button>
-                            </div>
-                          </div>
+                          <Test
+                            key={test.id}
+                            test={test}
+                            handleClick={() => this.addToCart(test)}
+                          />
                         )
                       }
                     </CSSTransitionGroup>
