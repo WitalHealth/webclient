@@ -17,7 +17,7 @@ const Header = () => (
       </Link>
       <ul className="navigation main">
         <li>
-          <NavLink exact to="/prover">
+          <NavLink to="/prover">
             <img className="icon" src={testsIcon} alt="icon"/>
             <div>Boka Prov</div>
           </NavLink>
