@@ -42,7 +42,7 @@ class Shop extends Component {
                 <Route exact path={`${match.url}/prover`} render={() => <h1>Tests</h1>} />
               </Switch>
             </div>
-            <div id="side-bar" className="side-bar">
+            <div className="side-bar">
               <Cart
                 handleRemove={(cartItem) => this.removeFromCart(cartItem)}
                 isSticky={isSticky}
