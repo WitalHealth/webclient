@@ -12,26 +12,28 @@ const TestPackages = ({ cart, products, addToCart }) => {
 
   return (
     <div className="products">
-      <CSSTransitionGroup
-        transitionName="test-fade"
-        transitionEnterTimeout={400}
-        transitionLeaveTimeout={400}
-      >
-        {
-          products.map((product, i) =>
-            notInCart(product) && <div className="test" key={product.id}>
-              <div className="test-inner">
-                <div className="desc">
-                  <h3>{product.name}</h3>
-                  <span>{product.description ? product.description : 'ingen beskrvning tillgänglig'} </span>
+      {
+        !!products.length && <CSSTransitionGroup
+          transitionName="test-fade"
+          transitionEnterTimeout={400}
+          transitionLeaveTimeout={400}
+        >
+          {
+            products.map((product, i) =>
+              notInCart(product) && <div className="test" key={product.id}>
+                <div className="test-inner">
+                  <div className="desc">
+                    <h3>{product.name}</h3>
+                    <span>{product.description ? product.description : 'ingen beskrvning tillgänglig'} </span>
+                  </div>
+                  <div className="price"> {product.price ? product.price : 'N/A'}</div>
+                  <button onClick={() => addToCart(product)}>Lägg till</button>
                 </div>
-                <div className="price"> {product.price ? product.price : 'N/A'}</div>
-                <button onClick={() => addToCart(product)}>Lägg till</button>
               </div>
-            </div>
-          )
-        }
-      </CSSTransitionGroup>
+            )
+          }
+        </CSSTransitionGroup>
+      }
     </div>
   )
 };

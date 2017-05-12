@@ -37,9 +37,9 @@ class Shop extends Component {
 
           <div className="flex">
             <div className="test-list">
-              <Switch>
-                <Route exact path={`${match.url}`} component={TestPackages}/>
-                {/*<Route exact path="/beställ/prover" render={() => <h1>prover</h1>}/>*/}
+              <Switch >
+                <Route exact path={`${match.url}`} component={TestPackages} />
+                <Route exact path={`${match.url}/prover`} render={() => <h1>Tests</h1>} />
               </Switch>
             </div>
             <div id="side-bar" className="side-bar">
@@ -58,10 +58,10 @@ class Shop extends Component {
   // TODO: better solution cart element from top instead of static pixel height window
   handleFixed() {
     const { isSticky } = this.state;
-    if ( (window.scrollY > 80 + 32) && !isSticky) {
+    if ( (window.scrollY > 80 + 32) && !isSticky ) {
       this.setState({ isSticky: true });
     }
-    else if((window.scrollY < 80 + 32) && isSticky) {
+    else if ( (window.scrollY < 80 + 32) && isSticky ) {
       this.setState({ isSticky: false });
     }
   }
