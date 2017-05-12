@@ -96,8 +96,17 @@ button.btn {
     background-color: #A76498;
     color: white; }
 
-.test-list .test-inner {
+.test-list {
   background-color: white; }
+
+.tabs a {
+  display: inline-block;
+  padding: 8px 16px;
+  color: white;
+  transition: all 300ms; }
+  .tabs a.active {
+    background-color: white;
+    color: #3EB7C1; }
 
 .test .test-inner {
   display: flex;
@@ -140,6 +149,8 @@ button.btn {
   min-width: 340px;
   padding-bottom: 16px;
   background-color: white; }
+  .cart.fixed {
+    position: fixed; }
   .cart h2 {
     padding: 16px 16px 0 16px; }
   .cart .cart-inner {
@@ -165,6 +176,7 @@ button.btn {
 
 .cart-fade-enter {
   opacity: 0.01;
+  overflow: hidden;
   height: 0; }
   .cart-fade-enter.cart-fade-enter-active {
     opacity: 1;
@@ -173,11 +185,11 @@ button.btn {
 
 .cart-fade-leave {
   opacity: 1;
-  height: 40px; }
+  height: 40px;
+  overflow: hidden; }
   .cart-fade-leave.cart-fade-leave-active {
     opacity: 0.01;
     height: 0;
-    overflow: hidden;
     transition: all 400ms; }
 
 .test-fade-enter {
