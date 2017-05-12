@@ -46,7 +46,7 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('style.css'),
     new CopyWebpackPlugin([ {
-      from: 'index.html',
+      from: 'client/index.html',
       to: 'index.html'
     } ])
   ]
