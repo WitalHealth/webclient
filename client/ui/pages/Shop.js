@@ -32,7 +32,7 @@ class Shop extends Component {
       <div className="scroll-container" onWheel={() => this.handleFixed()}>
         <div className="page-container">
           <div className="tabs">
-            <NavLink to="/prover">Provpaket</NavLink>
+            <NavLink exact to="/prover">Provpaket</NavLink>
             <NavLink to="/prover/alla">Enskilda Prover</NavLink>
           </div>
 
