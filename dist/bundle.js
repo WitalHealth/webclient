@@ -14826,7 +14826,7 @@ var Header = function Header() {
           null,
           _react2.default.createElement(
             _reactRouterDom.NavLink,
-            { exact: true, to: '/prover' },
+            { to: '/prover' },
             _react2.default.createElement('img', { className: 'icon', src: testsIcon, alt: 'icon' }),
             _react2.default.createElement(
               'div',
