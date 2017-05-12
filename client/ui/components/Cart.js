@@ -37,7 +37,7 @@ const Cart = ({ cart, removeFromCart, isSticky }) => {
             cart.map((cartItem, i) =>
               <div className="cart-item" key={cartItem.id}>
                 <div className="cart-item-inner">
-                  { cartItem.name}
+                  { cartItem.name ? cartItem.name : cartItem.custName}
                   <img className="icon remove" src={removeIcon} alt="ta bort"
                        onClick={() => removeFromCart(cartItem)}/>
                 </div>

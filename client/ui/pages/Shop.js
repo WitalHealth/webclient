@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import {
   Switch,
   Route,
@@ -9,9 +8,11 @@ import {
 import { connect } from 'react-redux';
 
 import Cart from '../components/Cart';
-import TestPackages from '../components/TestPackages';
+import Packages from '../components/Packages';
+import Products from '../components/Products';
 
-import * as actions from '../../data/products/actions';
+import { fetchProductPacks } from '../../data/productPacks/actions';
+import { fetchProducts } from '../../data/products/actions';
 
 class Shop extends Component {
   state = {
@@ -19,7 +20,8 @@ class Shop extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchProductPackages();
+    this.props.fetchProductPacks();
+    this.props.fetchProducts();
   }
 
   render() {
@@ -38,8 +40,8 @@ class Shop extends Component {
           <div className="flex">
             <div className="test-list">
               <Switch >
-                <Route exact path={`${match.url}`} component={TestPackages} />
-                <Route exact path={`${match.url}/prover`} render={() => <h1>Tests</h1>} />
+                <Route exact path={`${match.url}`} component={Packages}/>
+                <Route path={`${match.url}/alla`} component={Products}/>
               </Switch>
             </div>
             <div className="side-bar">
@@ -87,7 +89,7 @@ class Shop extends Component {
 
 export default withRouter(
   connect(
-    state => ({
-      products: state.products,
-    }), actions)(Shop));
+    null,
+    { fetchProducts, fetchProductPacks }
+  )(Shop));
 

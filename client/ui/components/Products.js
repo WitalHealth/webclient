@@ -5,7 +5,7 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import * as actions from '../../data/cart/actions';
 
 
-const TestPackages = ({ cart, products, addToCart }) => {
+const Packages = ({ cart, products, addToCart }) => {
   const notInCart = (product) => {
     return !cart.find((cartItem => cartItem === product));
   };
@@ -23,7 +23,7 @@ const TestPackages = ({ cart, products, addToCart }) => {
               notInCart(product) && <div className="test" key={product.id}>
                 <div className="test-inner">
                   <div className="desc">
-                    <h3>{product.name}</h3>
+                    <h3>{product.custName}</h3>
                     <span>{product.description ? product.description : 'ingen beskrvning tillgänglig'} </span>
                   </div>
                   <div className="price"> {product.price ? product.price : 'N/A'}</div>
@@ -45,4 +45,4 @@ export default withRouter(
       cart: state.cart,
     }),
     actions
-  )(TestPackages));
+  )(Packages));
