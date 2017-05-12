@@ -20,7 +20,6 @@ const Cart = ({ cart, removeFromCart, isSticky }) => {
       onMouseEnter={() => document.body.style.overflow = 'hidden'}
       onMouseLeave={() => document.body.style.overflow = 'scroll'}
     >
-      { console.log(isSticky) }
       <h2>Din beställning</h2>
       <div className="cart-inner">
         {

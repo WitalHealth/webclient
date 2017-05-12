@@ -57,10 +57,10 @@ class Shop extends Component {
 
   handleFixed() {
     const { isSticky } = this.state;
-    if ( (window.scrollY > 62 + 32) && !isSticky) {
+    if ( (window.scrollY > 80 + 32) && !isSticky) {
       this.setState({ isSticky: true });
     }
-    else if((window.scrollY < 62 + 32) && isSticky) {
+    else if((window.scrollY < 80 + 32) && isSticky) {
       this.setState({ isSticky: false });
     }
   }
