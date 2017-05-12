@@ -15,11 +15,7 @@ import * as actions from '../../data/products/actions';
 
 class Shop extends Component {
   state = {
-    tests: [],
-    testPackages: [],
-    cart: [],
-    totalCount: null,
-    doAppearAnimation: true
+    isSticky: false,
   }
 
   componentDidMount() {
@@ -27,7 +23,7 @@ class Shop extends Component {
   }
 
   render() {
-    const { tests, cart, totalCount } = this.state;
+    const { isSticky } = this.state;
     const { match } = this.props;
 
     return (
@@ -49,6 +45,8 @@ class Shop extends Component {
             <div id="side-bar" className="side-bar">
               <Cart
                 handleRemove={(cartItem) => this.removeFromCart(cartItem)}
+                isSticky={isSticky}
+                ref={(cart) => this.cart = cart}
               />
             </div>
           </div>
@@ -58,10 +56,12 @@ class Shop extends Component {
   }
 
   handleFixed() {
-    if ( window.scrollY > 62 + 32 ) {
-      this.cart.style.position = 'fixed';
-    } else {
-      this.cart.style.position = 'static';
+    const { isSticky } = this.state;
+    if ( (window.scrollY > 62 + 32) && !isSticky) {
+      this.setState({ isSticky: true });
+    }
+    else if((window.scrollY < 62 + 32) && isSticky) {
+      this.setState({ isSticky: false });
     }
   }
 

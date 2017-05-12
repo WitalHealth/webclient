@@ -73,6 +73,9 @@ button.btn {
   min-width: 340px;
   padding-bottom: 16px;
   background-color: white;
+  &.fixed {
+    position: fixed;
+  }
   h2 {
     padding: 16px 16px 0 16px;
   }
