@@ -55,6 +55,7 @@ class Shop extends Component {
     );
   }
 
+  // TODO: better solution cart element from top instead of static pixel height window
   handleFixed() {
     const { isSticky } = this.state;
     if ( (window.scrollY > 80 + 32) && !isSticky) {
