@@ -13,6 +13,7 @@ import Products from '../components/Products';
 
 import { fetchProductPacks } from '../../data/productPacks/actions';
 import { fetchProducts } from '../../data/products/actions';
+import { fetchCart } from '../../data/cart/actions';
 
 class Shop extends Component {
   state = {
@@ -20,6 +21,7 @@ class Shop extends Component {
   }
 
   componentDidMount() {
+    this.props.fetchCart();
     this.props.fetchProductPacks();
     this.props.fetchProducts();
   }
@@ -90,6 +92,6 @@ class Shop extends Component {
 export default withRouter(
   connect(
     null,
-    { fetchProducts, fetchProductPacks }
+    { fetchProducts, fetchProductPacks, fetchCart }
   )(Shop));
 

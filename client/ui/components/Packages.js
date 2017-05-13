@@ -2,12 +2,13 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import classNames from 'classnames';
 import * as actions from '../../data/cart/actions';
 
 
 const Packages = ({ cart, productPacks, addToCart }) => {
   const notInCart = (product) => {
-    return !cart.find((cartItem => cartItem === product));
+    return !cart.find((cartItem => cartItem.id === product.id));
   };
 
   return (
@@ -20,8 +21,9 @@ const Packages = ({ cart, productPacks, addToCart }) => {
         >
           {
             productPacks.map((product, i) =>
-              notInCart(product) && <div className="test" key={product.id}>
-                <div className="test-inner">
+              notInCart(product) &&
+              <div className="test" key={product.id}>
+                <div className={ `test-inner` }>
                   <div className="desc">
                     <h3>{product.name}</h3>
                     <span>{product.description ? product.description : 'ingen beskrvning tillgänglig'} </span>

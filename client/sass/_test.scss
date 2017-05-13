@@ -16,10 +16,6 @@ button.btn {
   }
 }
 
-.test-list {
-  background-color: white;
-}
-
 .tabs {
   //margin-bottom: 8px;
   a {
@@ -33,6 +29,11 @@ button.btn {
   }
 }
 
+.test-list {
+  background-color: white;
+}
+
+
 .test {
   .test-inner {
     display: flex;
@@ -42,6 +43,9 @@ button.btn {
     transition: all 200ms;
     &:hover {
       background-color: #fafafa;
+    }
+    &.in-cart {
+      opacity: 0.5;
     }
     .desc {
       //flex-grow: 1;
