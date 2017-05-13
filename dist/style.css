@@ -96,9 +96,6 @@ button.btn {
     background-color: #A76498;
     color: white; }
 
-.test-list {
-  background-color: white; }
-
 .tabs a {
   display: inline-block;
   padding: 8px 16px;
@@ -106,6 +103,9 @@ button.btn {
   .tabs a.active {
     background-color: white;
     color: #3EB7C1; }
+
+.test-list {
+  background-color: white; }
 
 .test .test-inner {
   display: flex;
@@ -115,6 +115,8 @@ button.btn {
   transition: all 200ms; }
   .test .test-inner:hover {
     background-color: #fafafa; }
+  .test .test-inner.in-cart {
+    opacity: 0.5; }
   .test .test-inner .desc span {
     margin-right: 8px;
     font-size: 12px; }
