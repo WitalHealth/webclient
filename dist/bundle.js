@@ -14853,8 +14853,8 @@ var Packages = function Packages(_ref) {
               'button',
               { onClick: function onClick() {
                   return addToCart(product);
-                } },
-              'L\xE4gg till'
+                }, disabled: true },
+              'Ej tillg\xE4nglig'
             )
           )
         );
