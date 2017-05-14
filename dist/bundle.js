@@ -14706,7 +14706,7 @@ var Cart = function Cart(_ref) {
             _react2.default.createElement(
               'div',
               { className: 'cart-item-inner' },
-              cartItem.name ? cartItem.name : cartItem.custName,
+              cartItem.name ? cartItem.name : 'FIX! Finns inget produktnamn',
               _react2.default.createElement(
                 'span',
                 { className: 'price' },
