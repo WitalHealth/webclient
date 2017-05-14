@@ -14997,7 +14997,7 @@ var Header = function Header(_ref) {
             _react2.default.createElement(
               'div',
               null,
-              'Boka Prov'
+              'Prover'
             )
           )
         ),
@@ -15034,12 +15034,12 @@ var Header = function Header(_ref) {
           null,
           _react2.default.createElement(
             _reactRouterDom.NavLink,
-            { to: '/resultat' },
-            _react2.default.createElement('img', { className: 'icon', src: resultsIcon, alt: 'icon' }),
+            { to: '/meddelanden' },
+            _react2.default.createElement('img', { className: 'icon', src: messagesIcon, alt: 'icon' }),
             _react2.default.createElement(
               'div',
               null,
-              'Mina resultat'
+              'Meddelanden'
             )
           )
         ),
@@ -15048,12 +15048,12 @@ var Header = function Header(_ref) {
           null,
           _react2.default.createElement(
             _reactRouterDom.NavLink,
-            { to: '/meddelanden' },
-            _react2.default.createElement('img', { className: 'icon', src: messagesIcon, alt: 'icon' }),
+            { to: '/resultat' },
+            _react2.default.createElement('img', { className: 'icon', src: resultsIcon, alt: 'icon' }),
             _react2.default.createElement(
               'div',
               null,
-              'Meddelanden'
+              'Resultat'
             )
           )
         ),
@@ -15090,7 +15090,7 @@ var Header = function Header(_ref) {
             _react2.default.createElement(
               'div',
               null,
-              'Min Profil'
+              'Profil'
             )
           )
         )

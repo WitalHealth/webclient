@@ -251,14 +251,16 @@ button.btn {
       .header .header-inner .navigation li {
         display: flex;
         align-items: center;
-        border-right: 1px solid #e2e2e2; }
+        border-right: 1px solid #e2e2e2;
+        width: 100px; }
         .header .header-inner .navigation li:nth-child(1) {
           border-left: 1px solid #e2e2e2; }
         .header .header-inner .navigation li a {
+          box-sizing: border-box;
           position: relative;
           text-align: center;
           height: 64px;
-          padding: 0 24px;
+          width: 100%;
           font-size: 12px;
           transition: all 300ms; }
           .header .header-inner .navigation li a.active {
