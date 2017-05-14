@@ -1,13 +1,13 @@
 import React from 'react';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import * as actions from '../../data/cart/actions';
 
 const removeIcon = require('../../assets/images/error.png');
 
-const Cart = ({ cart, removeFromCart, isSticky }) => {
+const Cart = ({ cart, removeFromCart, isSticky, location }) => {
 
   let cartClass = classNames({
     'cart': true,
@@ -56,7 +56,7 @@ const Cart = ({ cart, removeFromCart, isSticky }) => {
         <div className="label">Totalt att betala</div>
         <div className="total-price">{ `${totalPrice()}:-` }</div>
       </div>
-      <button className="btn">Gå vidare</button>
+      <Link to="/beställning" className="btn block">Till din beställning</Link>
     </div>
   )
 };
