@@ -25,6 +25,7 @@ const Cart = ({ cart, removeFromCart, isSticky, location }) => {
       className={ cartClass }
       onMouseEnter={() => document.body.style.overflow = 'hidden'}
       onMouseLeave={() => document.body.style.overflow = 'scroll'}
+      onClick={() => document.body.style.overflow = 'scroll'}
     >
       <h2>Din beställning</h2>
       <div className="cart-inner">
