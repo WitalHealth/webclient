@@ -14,6 +14,12 @@ const Cart = ({ cart, removeFromCart, isSticky }) => {
     'fixed': isSticky,
   });
 
+  const totalPrice = () => {
+    let totalPrice = 0;
+    cart.map(cartItem => totalPrice += cartItem.price);
+    return totalPrice;
+  };
+
   return (
     <div
       className={ cartClass }
@@ -45,6 +51,10 @@ const Cart = ({ cart, removeFromCart, isSticky }) => {
             )
           }
         </CSSTransitionGroup>
+      </div>
+      <div className="total-price-container">
+        <div className="label">Totalt att betala</div>
+        <div className="total-price">{ `${totalPrice()}:-` }</div>
       </div>
       <button className="btn">Gå vidare</button>
     </div>

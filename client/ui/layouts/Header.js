@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const logoIcon = require('../../assets/images/wital_logo.png');
 const testsIcon = require('../../assets/images/test-tube.png');
@@ -9,7 +10,7 @@ const messagesIcon = require('../../assets/images/speech-bubble.png');
 const userIcon = require('../../assets/images/user.png');
 const mapPinIcon = require('../../assets/images/map-pin-silhouette.svg');
 
-const Header = () => (
+const Header = ({ orderBadge }) => (
   <div className="header">
     <div className="header-inner">
       <Link to="/">
@@ -20,6 +21,16 @@ const Header = () => (
           <NavLink to="/prover">
             <img className="icon" src={testsIcon} alt="icon"/>
             <div>Boka Prov</div>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/beställning">
+            <img className="icon" src={testsIcon} alt="icon"/>
+            {
+              orderBadge.count >= 1 &&
+              <div className="badge"><span>{ orderBadge.count }</span></div>
+            }
+            <div>Beställning</div>
           </NavLink>
         </li>
         <li>
@@ -57,4 +68,9 @@ const Header = () => (
   </div>
 );
 
-export default Header;
+export default withRouter(
+  connect(
+    state => ({
+      orderBadge: state.orderBadge
+    }),
+  )(Header));

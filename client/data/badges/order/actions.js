@@ -1,0 +1,1 @@
+export const getOrderBadge = (count) => ({ type: 'GET_BADGE', count });

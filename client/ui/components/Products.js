@@ -26,7 +26,7 @@ const Packages = ({ cart, products, addToCart }) => {
                     <h3>{product.custName}</h3>
                     <span>{product.description ? product.description : 'ingen beskrvning tillgänglig'} </span>
                   </div>
-                  <div className="price"> {product.price ? product.price : 'N/A'}</div>
+                  <div className="price"> {product.price ? `${product.price}:-` : 'N/A'}</div>
                   <button onClick={() => addToCart(product)} disabled={true}>Ej tillgänglig</button>
                 </div>
               </div>
