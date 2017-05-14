@@ -1,0 +1,23 @@
+.tada-enter {
+  //transform: scale(0.3);
+  &.tada-enter-active {
+    //transform: scale(1);
+    animation: tada 400ms ease-out;
+  }
+}
+
+.tada-leave {
+  //transform: scale(0.3);
+  &.tada-leave-active {
+    //transform: scale(1);
+    animation: tada 400ms ease-out;
+  }
+}
+
+@keyframes tada {
+  0% { transform: scale(0.3)}
+  20% { transform: scale(1.2)}
+  60% { transform: scale(0.7)}
+  80% { transform: scale(1.1)}
+  110% { transform: scale(1)}
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 const logoIcon = require('../../assets/images/wital_logo.png');
 const testsIcon = require('../../assets/images/test-tube.png');
@@ -51,10 +52,16 @@ const Header = ({ orderBadge }) => (
         <li>
           <NavLink to="/beställning">
             <img className="icon" src={cartIcon} alt="icon"/>
-            {
-              orderBadge.count >= 1 &&
-              <div className="badge"><span>{ orderBadge.count }</span></div>
-            }
+            <CSSTransitionGroup
+              transitionName="tada"
+              transitionEnterTimeout={400}
+              transitionLeaveTimeout={400}
+            >
+              {
+                orderBadge.count >= 1 &&
+                <div className="badge" key={orderBadge.count}><span>{ orderBadge.count }</span></div>
+              }
+            </CSSTransitionGroup>
             <div>Beställning</div>
           </NavLink>
         </li>
