@@ -14704,6 +14704,11 @@ var Cart = function Cart(_ref) {
               'div',
               { className: 'cart-item-inner' },
               cartItem.name ? cartItem.name : cartItem.custName,
+              _react2.default.createElement(
+                'span',
+                { className: 'price' },
+                cartItem.price + ':-'
+              ),
               _react2.default.createElement('img', { className: 'icon remove', src: removeIcon, alt: 'ta bort',
                 onClick: function onClick() {
                   return removeFromCart(cartItem);
@@ -14730,7 +14735,7 @@ var Cart = function Cart(_ref) {
     _react2.default.createElement(
       _reactRouterDom.Link,
       { to: '/best\xE4llning', className: 'btn block' },
-      'Till din best\xE4llning'
+      'Till best\xE4llning'
     )
   );
 };

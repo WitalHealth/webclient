@@ -16,6 +16,41 @@
   110% {
     transform: scale(1); } }
 
+.cart-fade-enter {
+  opacity: 0.01;
+  overflow: hidden;
+  height: 0; }
+  .cart-fade-enter.cart-fade-enter-active {
+    opacity: 1;
+    height: 51px;
+    transition: all 400ms; }
+
+.cart-fade-leave {
+  opacity: 1;
+  height: 40px;
+  overflow: hidden; }
+  .cart-fade-leave.cart-fade-leave-active {
+    opacity: 0.01;
+    height: 0;
+    transition: all 400ms; }
+
+.test-fade-enter {
+  opacity: 0.01;
+  height: 0; }
+  .test-fade-enter.test-fade-enter-active {
+    opacity: 1;
+    height: 74px;
+    transition: all 400ms; }
+
+.test-fade-leave {
+  opacity: 1;
+  height: 74px; }
+  .test-fade-leave.test-fade-leave-active {
+    opacity: 0.01;
+    height: 0;
+    overflow: hidden;
+    transition: all 400ms; }
+
 .loading-indicator {
   margin: 0 auto; }
   .loading-indicator .message {
@@ -172,6 +207,9 @@
       border-bottom: 1px solid #f4f4f4;
       min-width: 300px;
       transition: all 200ms; }
+      .cart .cart-inner .cart-item-inner .price {
+        position: absolute;
+        right: 32px; }
       .cart .cart-inner .cart-item-inner .remove {
         position: absolute;
         cursor: pointer;
@@ -182,7 +220,7 @@
           transform: scale(0.98); }
   .cart .total-price-container {
     display: flex;
-    padding: 8px 16px;
+    padding: 8px 44px 8px 24px;
     font-size: 20px; }
     .cart .total-price-container .label {
       flex-grow: 3;
@@ -191,41 +229,6 @@
       flex-grow: 1;
       text-align: right;
       padding: 8px 0; }
-
-.cart-fade-enter {
-  opacity: 0.01;
-  overflow: hidden;
-  height: 0; }
-  .cart-fade-enter.cart-fade-enter-active {
-    opacity: 1;
-    height: 51px;
-    transition: all 400ms; }
-
-.cart-fade-leave {
-  opacity: 1;
-  height: 40px;
-  overflow: hidden; }
-  .cart-fade-leave.cart-fade-leave-active {
-    opacity: 0.01;
-    height: 0;
-    transition: all 400ms; }
-
-.test-fade-enter {
-  opacity: 0.01;
-  height: 0; }
-  .test-fade-enter.test-fade-enter-active {
-    opacity: 1;
-    height: 74px;
-    transition: all 400ms; }
-
-.test-fade-leave {
-  opacity: 1;
-  height: 74px; }
-  .test-fade-leave.test-fade-leave-active {
-    opacity: 0.01;
-    height: 0;
-    overflow: hidden;
-    transition: all 400ms; }
 
 .page-container {
   max-width: 1024px;
