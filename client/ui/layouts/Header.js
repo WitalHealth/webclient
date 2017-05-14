@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 const logoIcon = require('../../assets/images/wital_logo.png');
 const testsIcon = require('../../assets/images/test-tube.png');
+const cartIcon = require('../../assets/images/cart.png');
 const resultsIcon = require('../../assets/images/drop.png');
 const guideIcon = require('../../assets/images/cardiogram.png');
 const messagesIcon = require('../../assets/images/speech-bubble.png');
@@ -21,16 +22,6 @@ const Header = ({ orderBadge }) => (
           <NavLink to="/prover">
             <img className="icon" src={testsIcon} alt="icon"/>
             <div>Boka Prov</div>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/beställning">
-            <img className="icon" src={testsIcon} alt="icon"/>
-            {
-              orderBadge.count >= 1 &&
-              <div className="badge"><span>{ orderBadge.count }</span></div>
-            }
-            <div>Beställning</div>
           </NavLink>
         </li>
         <li>
@@ -55,6 +46,16 @@ const Header = ({ orderBadge }) => (
           <NavLink to="/meddelanden">
             <img className="icon" src={messagesIcon} alt="icon"/>
             <div>Meddelanden</div>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/beställning">
+            <img className="icon" src={cartIcon} alt="icon"/>
+            {
+              orderBadge.count >= 1 &&
+              <div className="badge"><span>{ orderBadge.count }</span></div>
+            }
+            <div>Beställning</div>
           </NavLink>
         </li>
         <li>
