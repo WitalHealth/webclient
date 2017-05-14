@@ -1,23 +1,73 @@
 .tada-enter {
-  //transform: scale(0.3);
   &.tada-enter-active {
-    //transform: scale(1);
     animation: tada 400ms ease-out;
   }
 }
 
 .tada-leave {
-  //transform: scale(0.3);
   &.tada-leave-active {
-    //transform: scale(1);
     animation: tada 400ms ease-out;
   }
 }
 
 @keyframes tada {
-  0% { transform: scale(0.3)}
-  20% { transform: scale(1.2)}
-  60% { transform: scale(0.7)}
-  80% { transform: scale(1.1)}
-  110% { transform: scale(1)}
+  0% {
+    transform: scale(0.3)
+  }
+  20% {
+    transform: scale(1.2)
+  }
+  60% {
+    transform: scale(0.7)
+  }
+  80% {
+    transform: scale(1.1)
+  }
+  110% {
+    transform: scale(1)
+  }
+}
+
+
+.cart-fade-enter {
+  opacity: 0.01;
+  overflow: hidden;
+  height: 0;
+  &.cart-fade-enter-active {
+    opacity: 1;
+    height: 51px;
+    transition: all 400ms;
+  }
+}
+
+.cart-fade-leave {
+  opacity: 1;
+  height: 40px;
+  overflow: hidden;
+  &.cart-fade-leave-active {
+    opacity: 0.01;
+    height: 0;
+    transition: all 400ms;
+  }
+}
+
+.test-fade-enter {
+  opacity: 0.01;
+  height: 0;
+  &.test-fade-enter-active {
+    opacity: 1;
+    height: 74px;
+    transition: all 400ms;
+  }
+}
+
+.test-fade-leave {
+  opacity: 1;
+  height: 74px;
+  &.test-fade-leave-active {
+    opacity: 0.01;
+    height: 0;
+    overflow: hidden;
+    transition: all 400ms;
+  }
 }

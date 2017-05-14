@@ -109,6 +109,10 @@
       border-bottom: 1px solid #f4f4f4;
       min-width: 300px;
       transition: all 200ms;
+      .price {
+        position: absolute;
+        right: 32px;
+      }
       .remove {
         position: absolute;
         cursor: pointer;
@@ -124,7 +128,7 @@
   }
   .total-price-container {
     display: flex;
-    padding: 8px 16px;
+    padding: 8px 44px 8px 24px;
     font-size: 20px;
     .label {
       flex-grow: 3;
@@ -135,48 +139,5 @@
       text-align: right;
       padding: 8px 0;
     }
-  }
-}
-
-.cart-fade-enter {
-  opacity: 0.01;
-  overflow: hidden;
-  height: 0;
-  &.cart-fade-enter-active {
-    opacity: 1;
-    height: 51px;
-    transition: all 400ms;
-  }
-}
-
-.cart-fade-leave {
-  opacity: 1;
-  height: 40px;
-  overflow: hidden;
-  &.cart-fade-leave-active {
-    opacity: 0.01;
-    height: 0;
-    transition: all 400ms;
-  }
-}
-
-.test-fade-enter {
-  opacity: 0.01;
-  height: 0;
-  &.test-fade-enter-active {
-    opacity: 1;
-    height: 74px;
-    transition: all 400ms;
-  }
-}
-
-.test-fade-leave {
-  opacity: 1;
-  height: 74px;
-  &.test-fade-leave-active {
-    opacity: 0.01;
-    height: 0;
-    overflow: hidden;
-    transition: all 400ms;
   }
 }

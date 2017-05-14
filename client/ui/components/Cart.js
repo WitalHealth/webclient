@@ -44,6 +44,7 @@ const Cart = ({ cart, removeFromCart, isSticky, location }) => {
               <div className="cart-item" key={cartItem.id}>
                 <div className="cart-item-inner">
                   { cartItem.name ? cartItem.name : cartItem.custName}
+                  <span className="price">{ `${cartItem.price}:-` }</span>
                   <img className="icon remove" src={removeIcon} alt="ta bort"
                        onClick={() => removeFromCart(cartItem)}/>
                 </div>
@@ -56,7 +57,7 @@ const Cart = ({ cart, removeFromCart, isSticky, location }) => {
         <div className="label">Totalt att betala</div>
         <div className="total-price">{ `${totalPrice()}:-` }</div>
       </div>
-      <Link to="/beställning" className="btn block">Till din beställning</Link>
+      <Link to="/beställning" className="btn block">Till beställning</Link>
     </div>
   )
 };
