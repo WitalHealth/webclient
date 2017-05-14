@@ -14675,6 +14675,9 @@ var Cart = function Cart(_ref) {
       },
       onMouseLeave: function onMouseLeave() {
         return document.body.style.overflow = 'scroll';
+      },
+      onClick: function onClick() {
+        return document.body.style.overflow = 'scroll';
       }
     },
     _react2.default.createElement(
