@@ -1,13 +1,20 @@
-.dev-frame {
-  position: fixed;
-  bottom: 0;
-  right: 0; }
-  .dev-frame .dev-tool {
-    box-sizing: border-box;
-    padding: 16px;
-    background-color: rgba(255, 103, 181, 0.3); }
-    .dev-frame .dev-tool pre {
-      margin: 8px 0; }
+.tada-enter.tada-enter-active {
+  animation: tada 400ms ease-out; }
+
+.tada-leave.tada-leave-active {
+  animation: tada 400ms ease-out; }
+
+@keyframes tada {
+  0% {
+    transform: scale(0.3); }
+  20% {
+    transform: scale(1.2); }
+  60% {
+    transform: scale(0.7); }
+  80% {
+    transform: scale(1.1); }
+  110% {
+    transform: scale(1); } }
 
 .loading-indicator {
   margin: 0 auto; }
