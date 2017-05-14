@@ -44,7 +44,7 @@ const Cart = ({ cart, removeFromCart, isSticky, location }) => {
             cart.map((cartItem, i) =>
               <div className="cart-item" key={cartItem.id}>
                 <div className="cart-item-inner">
-                  { cartItem.name ? cartItem.name : cartItem.custName}
+                  { cartItem.name ? cartItem.name : 'FIX! Finns inget produktnamn'}
                   <span className="price">{ `${cartItem.price}:-` }</span>
                   <img className="icon remove" src={removeIcon} alt="ta bort"
                        onClick={() => removeFromCart(cartItem)}/>
