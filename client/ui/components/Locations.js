@@ -19,16 +19,18 @@ class Locations extends Component {
     const { locations } = this.props;
 
     return (
-      <div>
+      <div className="grid">
         {
           locations.map((location, i) =>
-            <div key={i}>
-              <h1>{ location.name }</h1>
-              <div>{ location.street }</div>
-              <div>{ location.city }</div>
-              <a target="_blank"
-                 href={`https://www.google.se/maps/?q=${location.name}, ${this.prettyStreet(location.street)}`}>SE
-                KARTA</a>
+            <div key={i} className="grid-item">
+              <h3>{ location.city }</h3>
+              <div className="name">{ location.name }</div>
+              <div className="street">{ location.street }</div>
+              <a
+                className="btn"
+                target="_blank"
+                href={`https://www.google.se/maps/?q=${location.name}, ${this.prettyStreet(location.street)}`}
+              >SE KARTA</a>
             </div>
           )
         }
