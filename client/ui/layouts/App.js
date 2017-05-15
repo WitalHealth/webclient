@@ -9,7 +9,7 @@ import Header from '../layouts/Header';
 import Home from '../pages/Home';
 import Shop from '../pages/Shop';
 import Guides from '../pages/Guides';
-import Locations from '../pages/Locations';
+import Labs from '../pages/Labs';
 import Messages from '../pages/Messages';
 import Results from '../pages/Results';
 import Order from '../pages/Order';
@@ -23,7 +23,7 @@ const App = () => (
       <Route exact path="/" component={Home}/>
       <Route path="/prover" component={Shop}/>
       <Route path="/provguiden" component={Guides}/>
-      <Route path="/provstationer" component={Locations}/>
+      <Route path="/provstationer" component={Labs}/>
       <Route path="/meddelanden" component={Messages}/>
       <Route path="/resultat" component={Results}/>
       <Route path="/beställning" component={Order}/>
