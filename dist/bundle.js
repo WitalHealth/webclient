@@ -14838,7 +14838,7 @@ var Locations = function (_Component) {
     key: 'prettyStreet',
     value: function prettyStreet(street) {
       var n = street.indexOf(',');
-      return street.substring(0, n !== -1 ? n : street.length);
+      return street.substring(0, n !== false ? n : street.length);
     }
   }, {
     key: 'componentWillMount',
@@ -14878,7 +14878,6 @@ var Locations = function (_Component) {
             _react2.default.createElement(
               'a',
               {
-                className: 'btn',
                 target: '_blank',
                 href: 'https://www.google.se/maps/?q=' + location.name + ', ' + _this2.prettyStreet(location.street)
               },
@@ -15365,9 +15364,9 @@ exports.default = function () {
     _defaultLayout2.default,
     null,
     _react2.default.createElement(
-      'h1',
-      null,
-      'Provstationer'
+      'div',
+      { className: 'search-input' },
+      _react2.default.createElement('input', { type: 'search', placeholder: 'Hitta din station' })
     ),
     _react2.default.createElement(_Locations2.default, null)
   );
