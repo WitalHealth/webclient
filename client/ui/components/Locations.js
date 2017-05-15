@@ -8,7 +8,7 @@ class Locations extends Component {
 
   prettyStreet(street) {
     let n = street.indexOf(',');
-    return street.substring(0, n !== -1 ? n : street.length);
+    return street.substring(0, n !== false ? n : street.length);
   }
 
   componentWillMount() {
@@ -27,7 +27,6 @@ class Locations extends Component {
               <div className="name">{ location.name }</div>
               <div className="street">{ location.street }</div>
               <a
-                className="btn"
                 target="_blank"
                 href={`https://www.google.se/maps/?q=${location.name}, ${this.prettyStreet(location.street)}`}
               >SE KARTA</a>

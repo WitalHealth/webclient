@@ -4,7 +4,9 @@ import DefaultLayout from '../layouts/defaultLayout';
 
 export default () => (
   <DefaultLayout>
-    <h1>Provstationer</h1>
+    <div className="search-input">
+      <input type="search" placeholder="Hitta din station"/>
+    </div>
     <Locations/>
   </DefaultLayout>
 );
