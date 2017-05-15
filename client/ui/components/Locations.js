@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import * as actions from '../../data/locations/locations.actions';
 
 
@@ -16,7 +16,7 @@ class Locations extends Component {
   }
 
   render() {
-    const {locations} = this.props;
+    const { locations } = this.props;
 
     return (
       <div>
@@ -27,7 +27,7 @@ class Locations extends Component {
               <div>{ location.street }</div>
               <div>{ location.city }</div>
               <a target="_blank"
-                     href={`https://www.google.se/maps/?q=${location.name}, ${this.prettyStreet(location.street)}`}>SE
+                 href={`https://www.google.se/maps/?q=${location.name}, ${this.prettyStreet(location.street)}`}>SE
                 KARTA</a>
             </div>
           )

@@ -1,12 +1,10 @@
 import React from 'react';
 import Locations from '../../ui/components/Locations';
-
+import DefaultLayout from '../layouts/defaultLayout';
 
 export default () => (
-  <div>
+  <DefaultLayout>
     <h1>Provstationer</h1>
-    <div>
-      <Locations/>
-    </div>
-  </div>
+    <Locations/>
+  </DefaultLayout>
 );
