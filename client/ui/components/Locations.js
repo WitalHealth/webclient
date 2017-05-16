@@ -8,7 +8,7 @@ class Locations extends Component {
 
   prettyStreet(street) {
     let n = street.indexOf(',');
-    return street.substring(0, n !== false ? n : street.length);
+    return street.substring(0, n !== -1 ? n : street.length);
   }
 
   componentWillMount() {
