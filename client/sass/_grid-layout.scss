@@ -5,12 +5,12 @@
   flex-wrap: wrap;
   //background-color: rgba(248, 194, 255, 0.27);
   //margin: 0 -8px;
-  .grid-item {
+  > .grid-item {
     position: relative;
     text-align: center;
     box-sizing: border-box;
-    width: calc(33.39% - 6px);
-    min-width: 220px;
+    width: calc(33.333% - 6px);
+    min-width: 260px;
     height: 140px;
     margin: 0 8px 24px 0;
     padding: 24px;
@@ -19,6 +19,10 @@
       &:nth-child(3n) {
         margin: 0 0 8px 0;
       }
+    }
+    @media all and (max-width: 561px){
+      width: 100%;
+      margin: 0 0 24px 0;
     }
     h3 {
       font-weight: 400;
@@ -60,13 +64,31 @@
   }
 }
 
-@media all and (max-width: 816px){
+@media all and (min-width: 561px) and (max-width: 816px){
   .grid {
     .grid-item {
       width: calc(50% - 6px);
       &:nth-child(2n) {
         margin: 0 0 8px 0;
       }
+    }
+  }
+}
+
+
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1em;
+  .grid-item {
+    //min-height: 200px;
+    padding: 20px;
+    background-color: white;
+    text-align: center;
+    color: #000;
+    .city, .name, .street {
+      margin-bottom: 12px;
     }
   }
 }

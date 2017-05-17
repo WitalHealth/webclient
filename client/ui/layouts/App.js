@@ -19,7 +19,7 @@ const App = () => (
   <Router>
     <div>
       <Route component={Header}/>
-      <Redirect to="/prover"/>
+      <Redirect to="/meddelanden"/>
       <Route exact path="/" component={Home}/>
       <Route path="/prover" component={Shop}/>
       <Route path="/provguiden" component={Guides}/>
