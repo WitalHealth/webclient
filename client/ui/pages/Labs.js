@@ -5,7 +5,6 @@ import DefaultLayout from '../layouts/defaultLayout';
 export default () => (
   <DefaultLayout>
     <div className="search-input">
-      <input type="search" placeholder="Hitta din station"/>
     </div>
     <Locations/>
   </DefaultLayout>
