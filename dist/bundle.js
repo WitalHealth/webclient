@@ -13461,7 +13461,7 @@ var App = function App() {
       'div',
       null,
       _react2.default.createElement(_reactRouterDom.Route, { component: _Header2.default }),
-      _react2.default.createElement(_reactRouterDom.Redirect, { to: '/meddelanden' }),
+      _react2.default.createElement(_reactRouterDom.Redirect, { to: '/prover' }),
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/prover', component: _Shop2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/provguiden', component: _Guides2.default }),
