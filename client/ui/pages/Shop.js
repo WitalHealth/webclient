@@ -12,7 +12,7 @@ import Packages from '../components/Packages';
 import Products from '../components/Products';
 import DefaultLayout from '../layouts/defaultLayout';
 
-import { fetchProductPacks } from '../../data/productPacks/actions';
+import { fetchProductPacks } from '../../data/productPackages/productPackages.actions';
 import { fetchCart } from '../../data/cart/actions';
 
 class Shop extends Component {
