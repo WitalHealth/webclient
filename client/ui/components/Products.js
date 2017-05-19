@@ -41,7 +41,7 @@ const Packages = ({ cart, products, addToCart }) => {
 export default withRouter(
   connect(
     state => ({
-      products: state.productSingles,
+      products: state.productSinglesCommon,
       cart: state.cart,
     }),
     actions
