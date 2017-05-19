@@ -1,10 +1,4 @@
-$blue: #3EB7C1;
-$green: #85f9d1;
-$violet: #A76498;
-$green-pale: #E4EAE7;
-$beige: #F3F2EC;
-$copy-text: #353535;
-
+@import "colors";
 @import "animations";
 @import "loading-indicator";
 @import "test";
@@ -23,6 +17,11 @@ body {
   background-color: $beige;
   font-family: "Helvetica Neue", sans-serif;
   font-weight: 300;
+  &.no-scroll {
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+  }
 }
 
 h1, h2, h3 {
@@ -113,7 +112,7 @@ select {
   }
   .other-email {
     display: flex;
-    background-color: $blue;
+    background-color: $dull-cyan;
     padding: 16px;
     input {
       width: 100%;
