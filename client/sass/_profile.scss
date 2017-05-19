@@ -1,0 +1,47 @@
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  text-align: center;
+}
+
+.toggle-button {
+  margin-bottom: 10px;
+}
+
+.card-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.userinfo-input {
+  background-color: white;
+  border: none;
+  text-align: center;
+}
+
+.contact-container {
+  text-align: center;
+}
+
+.pofile-container {
+  text-align: center;
+}
+
+#toggle-container {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  justify-content: center;
+}
+
+#toggle-container {
+  p {
+    margin-right: 10px;
+  }
+}
+
+.card {
+  width: 150px;
+}
