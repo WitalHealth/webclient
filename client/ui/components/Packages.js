@@ -2,11 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-import classNames from 'classnames';
 import * as actions from '../../data/cart/actions';
 
 
-const Packages = ({ cart, productPacks, addToCart }) => {
+const Packages = ({ cart, productPackages, addToCart }) => {
   const notInCart = (product) => {
     return !cart.find((cartItem => cartItem.id === product.id));
   };
@@ -14,13 +13,13 @@ const Packages = ({ cart, productPacks, addToCart }) => {
   return (
     <div className="products">
       {
-        !!productPacks.length && <CSSTransitionGroup
+        !!productPackages.length && <CSSTransitionGroup
           transitionName="test-fade"
           transitionEnterTimeout={400}
           transitionLeaveTimeout={400}
         >
           {
-            productPacks.map((product, i) =>
+            productPackages.map((product, i) =>
               notInCart(product) &&
               <div className="test" key={product.id}>
                 <div className={ `test-inner` }>
@@ -43,7 +42,7 @@ const Packages = ({ cart, productPacks, addToCart }) => {
 export default withRouter(
   connect(
     state => ({
-      productPacks: state.productPacks,
+      productPackages: state.productPackages,
       cart: state.cart,
     }),
     actions
