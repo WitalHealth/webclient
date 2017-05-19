@@ -55,7 +55,7 @@ class Locations extends Component {
                 <a
                   target="_blank"
                   href={`https://www.google.se/maps/?q=${location.name}, ${this.prettyStreet(location.street)}`}
-                >SE KARTA</a>
+                >Se karta och mer information</a>
               </div>
             )
           }
