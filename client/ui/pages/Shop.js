@@ -13,7 +13,6 @@ import Products from '../components/Products';
 import DefaultLayout from '../layouts/defaultLayout';
 
 import { fetchProductPacks } from '../../data/productPacks/actions';
-import { fetchProducts } from '../../data/products/actions';
 import { fetchCart } from '../../data/cart/actions';
 
 class Shop extends Component {
@@ -24,7 +23,6 @@ class Shop extends Component {
   componentDidMount() {
     this.props.fetchCart();
     this.props.fetchProductPacks();
-    this.props.fetchProducts();
   }
 
   render() {
@@ -88,6 +86,6 @@ class Shop extends Component {
 export default withRouter(
   connect(
     null,
-    { fetchProducts, fetchProductPacks, fetchCart }
+    { fetchProductPacks, fetchCart }
   )(Shop));
 
