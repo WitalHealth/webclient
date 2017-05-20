@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Header from '../layouts/Header';
 import Home from '../pages/Home';
@@ -16,20 +12,17 @@ import Order from '../pages/Order';
 import Profile from '../pages/Profile';
 
 const App = () => (
-  <Router>
-    <div>
-      <Route component={Header}/>
-      <Redirect to="/profil"/>
-      <Route exact path="/" component={Home}/>
-      <Route path="/prover" component={Shop}/>
-      <Route path="/provguiden" component={Guides}/>
-      <Route path="/provstationer" component={Labs}/>
-      <Route path="/meddelanden" component={Messages}/>
-      <Route path="/resultat" component={Results}/>
-      <Route path="/beställning" component={Order}/>
-      <Route path="/profil" component={Profile}/>
-    </div>
-  </Router>
+  <div className="app">
+    <Route component={Header}/>
+    <Route exact path="/" component={Home}/>
+    <Route path="/prover" component={Shop}/>
+    <Route path="/provguiden" component={Guides}/>
+    <Route path="/provstationer" component={Labs}/>
+    <Route path="/meddelanden" component={Messages}/>
+    <Route path="/resultat" component={Results}/>
+    <Route path="/beställning" component={Order}/>
+    <Route path="/profil" component={Profile}/>
+  </div>
 );
 
 export default App;

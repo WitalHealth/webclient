@@ -8,8 +8,9 @@ import {
 import { connect } from 'react-redux';
 
 import Cart from '../components/Cart';
-import Packages from '../components/Packages';
-import Products from '../components/Products';
+import ProductPackages from '../components/ProductPackages';
+import ProductSingles from '../components/ProductSingles';
+import ProductSinglesCommon from '../components/ProductSinglesCommon';
 import DefaultLayout from '../layouts/defaultLayout';
 
 import { fetchProductPacks } from '../../data/productPackages/productPackages.actions';
@@ -35,14 +36,16 @@ class Shop extends Component {
           <div className="tabs">
             <NavLink exact to="/prover">Provpaket</NavLink>
             <NavLink to="/prover/alla">Enskilda Prover</NavLink>
+            <NavLink to="/prover/ovanliga">Ovanliga Prover</NavLink>
           </div>
 
 
           <div className="flex">
             <div className="test-list">
               <Switch >
-                <Route exact path={`${match.url}`} component={Packages}/>
-                <Route path={`${match.url}/alla`} component={Products}/>
+                <Route exact path={`${match.url}`} component={ProductPackages}/>
+                <Route path={`${match.url}/alla`} component={ProductSinglesCommon}/>
+                <Route path={`${match.url}/ovanliga`} component={ProductSingles}/>
               </Switch>
             </div>
             <div className="side-bar">
