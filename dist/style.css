@@ -98,11 +98,12 @@ input.toggle-round:checked + label:before {
 input.toggle-round:checked + label:after {
   margin-left: 40px; }
 
-.loading-indicator {
-  margin: 0 auto; }
-  .loading-indicator .message {
-    margin-top: 16px;
-    text-align: center; }
+.loading-indicator .loading-indicator-inner {
+  padding: 32px; }
+
+.loading-indicator .message {
+  margin-top: 8px;
+  text-align: center; }
 
 .sk-cube-grid {
   width: 40px;
@@ -169,6 +170,12 @@ input.toggle-round:checked + label:after {
     -webkit-transform: scale3D(0, 0, 1);
     transform: scale3D(0, 0, 1); } }
 
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; }
+
 .btn.block {
   display: block;
   font-family: "Helvetica Neue", sans-serif;
@@ -193,7 +200,7 @@ input.toggle-round:checked + label:after {
     background-color: white;
     color: #3EB7C1; }
 
-.test-list {
+.products {
   background-color: white; }
 
 .test {
@@ -418,6 +425,8 @@ input.toggle-round:checked + label:after {
       .grid > .grid-item {
         width: 100%;
         margin: 0 0 24px 0; } }
+    .grid > .grid-item:hover {
+      background-color: #fafafa; }
     .grid > .grid-item h3 {
       font-weight: 400;
       margin-bottom: 8px; }
