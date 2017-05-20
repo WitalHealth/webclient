@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import * as actions from '../../data/cart/actions';
-
+import LoadingIndicator from './LoadingIndicator';
 
 const ProductList = ({ products, cart, addToCart }) => {
   const notInCart = (product) => {
@@ -13,29 +13,30 @@ const ProductList = ({ products, cart, addToCart }) => {
   return (
     <div className="products">
       {
-        !!products.length && <CSSTransitionGroup
-          transitionName="test-fade"
-          transitionEnterTimeout={400}
-          transitionLeaveTimeout={400}
-        >
-          {
-            products.map((product, i) =>
-              notInCart(product) &&
-              <div className="test" key={product.id}>
-                <div className="test-inner">
-                  <div className="desc">
-                    <h3>{product.name}</h3>
-                    <p>{product.desc ? product.desc.replace(/(<([^>]+)>)/ig, "").slice(0, 244) : 'ingen beskrvning tillgänglig'} </p>
-                  </div>
-                  <div className="price-container">
-                    <span className="price"> {product.price ? `${product.price}:-` : 'N/A'}</span>
-                    <button onClick={() => addToCart(product)}>Lägg till</button>
+        !!products.length &&
+          <CSSTransitionGroup
+            transitionName="test-fade"
+            transitionEnterTimeout={400}
+            transitionLeaveTimeout={400}
+          >
+            {
+              products.map((product, i) =>
+                notInCart(product) &&
+                <div className="test" key={product.id}>
+                  <div className="test-inner">
+                    <div className="desc">
+                      <h3>{product.name}</h3>
+                      <p>{product.desc ? product.desc.replace(/(<([^>]+)>)/ig, "").slice(0, 244) : 'ingen beskrvning tillgänglig'} </p>
+                    </div>
+                    <div className="price-container">
+                      <span className="price"> {product.price ? `${product.price}:-` : 'N/A'}</span>
+                      <button onClick={() => addToCart(product)}>Lägg till</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          }
-        </CSSTransitionGroup>
+              )
+            }
+          </CSSTransitionGroup>
       }
     </div>
   )

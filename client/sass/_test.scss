@@ -1,3 +1,10 @@
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 .btn {
   &.block {
     display: block;
@@ -32,10 +39,11 @@
 }
 
 .test-list {
-  background-color: white;
 }
 
-
+.products {
+  background-color: white;
+}
 .test {
   overflow: hidden;
     border-bottom: 1px solid #f4f4f4;
