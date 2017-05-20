@@ -5,7 +5,7 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import * as actions from '../../data/cart/actions';
 
 
-const Packages = ({ cart, productPackages, addToCart }) => {
+const ProductList = ({ products, cart, addToCart }) => {
   const notInCart = (product) => {
     return !cart.find((cartItem => cartItem.id === product.id));
   };
@@ -13,22 +13,24 @@ const Packages = ({ cart, productPackages, addToCart }) => {
   return (
     <div className="products">
       {
-        !!productPackages.length && <CSSTransitionGroup
+        !!products.length && <CSSTransitionGroup
           transitionName="test-fade"
           transitionEnterTimeout={400}
           transitionLeaveTimeout={400}
         >
           {
-            productPackages.map((product, i) =>
+            products.map((product, i) =>
               notInCart(product) &&
               <div className="test" key={product.id}>
-                <div className={ `test-inner` }>
+                <div className="test-inner">
                   <div className="desc">
                     <h3>{product.name}</h3>
-                    <span>{product.description ? product.description : 'ingen beskrvning tillgänglig'} </span>
+                    <p>{product.desc ? product.desc.replace(/(<([^>]+)>)/ig, "").slice(0, 244) : 'ingen beskrvning tillgänglig'} </p>
                   </div>
-                  <div className="price"> {product.price ? `${product.price}:-` : 'N/A'}</div>
-                  <button onClick={() => addToCart(product)}>Lägg till</button>
+                  <div className="price-container">
+                    <span className="price"> {product.price ? `${product.price}:-` : 'N/A'}</span>
+                    <button onClick={() => addToCart(product)}>Lägg till</button>
+                  </div>
                 </div>
               </div>
             )
@@ -42,8 +44,7 @@ const Packages = ({ cart, productPackages, addToCart }) => {
 export default withRouter(
   connect(
     state => ({
-      productPackages: state.productPackages,
       cart: state.cart,
     }),
     actions
-  )(Packages));
+  )(ProductList));
