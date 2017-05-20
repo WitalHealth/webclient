@@ -37,10 +37,12 @@
 
 
 .test {
-  .test-inner {
-    display: flex;
-    background-color: white;
+  overflow: hidden;
     border-bottom: 1px solid #f4f4f4;
+  .test-inner {
+    //height: 120px;
+    //display: flex;
+    background-color: white;
     padding: 16px;
     transition: all 200ms;
     &:hover {
@@ -50,38 +52,38 @@
       opacity: 0.5;
     }
     .desc {
-      //flex-grow: 1;
-      span {
+      p {
         margin-right: 8px;
         font-size: 12px;
+        height: 38px;
+        overflow: hidden;
       }
     }
-    .price {
+    .price-container {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
-      flex-grow: 2;
-    }
-    button {
-      font-family: "Helvetica Neue", sans-serif;
-      height: 30px;
-      outline: none;
-      background-color: white;
-      color: $violet;
-      margin-left: 8px;
-      padding: 0 24px;
-      margin-top: 4px;
-      margin-bottom: 4px;
-      border-radius: 24px;
-      border: 1px solid $violet;
-      cursor: pointer;
-      transition: all 300ms;
-      &:hover {
-        background-color: $violet;
-        color: white;
+      margin-top: 16px;
+      .price {
+        width: 100%;
+        font-size: 20px;
       }
-      &:active {
-        transform: scale(0.98);
+      button {
+        font-family: "Helvetica Neue", sans-serif;
+        padding: 12px;
+        width: 120px;
+        border: 1px solid $violet;
+        outline: none;
+        background-color: white;
+        color: $violet;
+        cursor: pointer;
+        transition: all 300ms;
+        &:hover {
+          background-color: $violet;
+          color: white;
+        }
+        &:active {
+          transform: scale(0.98);
+        }
       }
     }
   }
