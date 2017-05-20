@@ -4,11 +4,15 @@ import { connect } from 'react-redux';
 
 import ProductList from './ProductList';
 import LoadingIndicator from './LoadingIndicator';
+import Pagination from './Pagination';
+
 
 const ProductSingles = ({ products }) => (
   <div className="ProductPackages">
     <LoadingIndicator message="Hämtar Prover" isLoading={!products.length}>
-      <ProductList products={products}/>
+      <Pagination data={products} offset={100}>
+        <ProductList/>
+      </Pagination>
     </LoadingIndicator>
   </div>
 );
