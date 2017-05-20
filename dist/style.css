@@ -223,7 +223,7 @@ input.toggle-round:checked + label:after {
     .test .test-inner .desc p {
       margin-right: 8px;
       font-size: 12px;
-      height: 38px;
+      height: 32px;
       overflow: hidden; }
     .test .test-inner .price-container {
       display: flex;
