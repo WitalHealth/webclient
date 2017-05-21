@@ -16491,15 +16491,6 @@ var Shop = function (_Component) {
             _react2.default.createElement(
               'div',
               { className: 'test-list' },
-              _react2.default.createElement(
-                'div',
-                { className: 'search-container' },
-                _react2.default.createElement('input', { type: 'search', placeholder: 'Hitta prov',
-                  onChange: function onChange(e) {
-                    return _this2.handleSearch(e);
-                  } }),
-                _react2.default.createElement('div', { className: 'icon-search' })
-              ),
               _react2.default.createElement('div', { style: { textAlign: 'center' } }),
               _react2.default.createElement(
                 'div',
@@ -16522,6 +16513,15 @@ var Shop = function (_Component) {
                   { to: '/prover/ovanliga' },
                   'Ovanliga Prover'
                 )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'search-container' },
+                _react2.default.createElement('input', { type: 'search', placeholder: 'Hitta prov',
+                  onChange: function onChange(e) {
+                    return _this2.handleSearch(e);
+                  } }),
+                _react2.default.createElement('div', { className: 'icon-search' })
               ),
               _react2.default.createElement(
                 _LoadingIndicator2.default,

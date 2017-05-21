@@ -495,8 +495,8 @@ input.toggle-round:checked + label:after {
 
 .search-container {
   position: relative;
-  width: 300px;
-  margin: 0 auto 32px auto; }
+  margin: 0 auto;
+  border-bottom: 1px solid #f4f4f4; }
 
 input[type='search'] {
   display: block;
