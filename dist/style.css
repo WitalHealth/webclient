@@ -39,12 +39,12 @@
   height: 0; }
   .test-fade-enter.test-fade-enter-active {
     opacity: 1;
-    height: 155px;
+    height: 150px;
     transition: all 400ms; }
 
 .test-fade-leave {
   opacity: 1;
-  height: 155px; }
+  height: 150px; }
   .test-fade-leave.test-fade-leave-active {
     opacity: 0.01;
     height: 0;
@@ -372,6 +372,16 @@ input.toggle-round:checked + label:after {
     transition: all 300ms; }
     .icon.remove:hover {
       opacity: 1; }
+  .icon-search {
+    background: url(/./images/magnifier.svg);
+    width: 24px;
+    height: 24px;
+    background-size: cover; }
+    .search-container .icon-search {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      opacity: 0.4; }
 
 .cards-container {
   display: flex;
@@ -483,15 +493,18 @@ input.toggle-round:checked + label:after {
     #grid .grid-item .city, #grid .grid-item .name, #grid .grid-item .street {
       margin-bottom: 12px; }
 
+.search-container {
+  position: relative;
+  width: 300px;
+  margin: 0 auto 32px auto; }
+
 input[type='search'] {
   display: block;
+  width: 100%;
   outline: none;
   border: none;
-  padding: 16px;
-  width: 300px;
-  text-align: center;
-  font-size: 16px;
-  margin: 0 auto 32px auto; }
+  padding: 16px 16px 16px 50px;
+  font-size: 16px; }
 
 .dev-min-height {
   min-height: 300px; }
