@@ -96,10 +96,11 @@ class Shop extends Component {
   // TODO: better solution cart element from top instead of static pixel height window
   handleFixed() {
     const { isSticky } = this.state;
-    if ( (window.scrollY > 96 + 32) && !isSticky ) {
+    const fromTop = 94;
+    if ( (window.scrollY > fromTop) && !isSticky ) {
       this.setState({ isSticky: true });
     }
-    else if ( (window.scrollY < 96 + 32) && isSticky ) {
+    else if ( (window.scrollY < fromTop) && isSticky ) {
       this.setState({ isSticky: false });
     }
   }
