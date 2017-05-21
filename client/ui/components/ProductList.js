@@ -26,7 +26,7 @@ const ProductList = ({ products, cart, addToCart }) => {
                   <div className="test-inner">
                     <div className="desc">
                       <h3>{product.name}</h3>
-                      <p>{product.desc ? product.desc.replace(/(<([^>]+)>)/ig, "").slice(0, 244) : 'ingen beskrvning tillgänglig'} </p>
+                      <p>{product.excerpt ? product.excerpt.slice(0, 244) : 'ingen beskrvning tillgänglig'} </p>
                     </div>
                     <div className="price-container">
                       <span className="price"> {product.price ? `${product.price}:-` : 'N/A'}</span>

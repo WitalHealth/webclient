@@ -7,15 +7,8 @@ import LoadingIndicator from './LoadingIndicator';
 
 const ProductSinglesCommon = ({ products }) => (
   <div className="ProductPackages">
-    <LoadingIndicator message="Hämtar Prover" isLoading={!products.length}>
-      <ProductList products={products}/>
-    </LoadingIndicator>
+    <ProductList products={products}/>
   </div>
 );
 
-export default withRouter(
-  connect(
-    state => ({
-      products: state.productSinglesCommon
-    })
-  )(ProductSinglesCommon));
+export default ProductSinglesCommon;
