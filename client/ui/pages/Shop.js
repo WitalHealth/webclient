@@ -55,11 +55,6 @@ class Shop extends Component {
 
           <div className="flex">
             <div className="test-list">
-              <div className="search-container">
-                <input type="search" placeholder="Hitta prov"
-                       onChange={(e) => this.handleSearch(e)}/>
-                <div className="icon-search" />
-              </div>
               <div style={{ textAlign: 'center' }}>
               </div>
               <div className="tabs">
@@ -68,6 +63,11 @@ class Shop extends Component {
                 <NavLink to="/prover/alla">Enskilda
                   Prover { searchActive ? `(${filteredSinglesCommon.length})` : `(${productSinglesCommon.length})` }</NavLink>
                 <NavLink to="/prover/ovanliga">Ovanliga Prover</NavLink>
+              </div>
+              <div className="search-container">
+                <input type="search" placeholder="Hitta prov"
+                       onChange={(e) => this.handleSearch(e)}/>
+                <div className="icon-search" />
               </div>
               <LoadingIndicator message="Hämtar Prover" isLoading={!productPackages.length}>
                 <Switch >
