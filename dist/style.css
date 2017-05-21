@@ -499,7 +499,9 @@ input.toggle-round:checked + label:after {
   border-bottom: 1px solid #f4f4f4; }
 
 input[type='search'] {
+  font-family: "Helvetica Neue", sans-serif;
   display: block;
+  font-weight: 300;
   width: 100%;
   outline: none;
   border: none;
