@@ -53,7 +53,6 @@
 
 .toggle {
   position: absolute;
-  margin-left: -9999px;
   visibility: hidden; }
 
 .toggle + label {
@@ -65,10 +64,10 @@
 
 input.toggle-round + label {
   padding: 2px;
-  width: 70px;
-  height: 36px;
+  width: 40px;
+  height: 20px;
   background-color: #dddddd;
-  border-radius: 30px; }
+  border-radius: 20px; }
 
 input.toggle-round + label:before,
 input.toggle-round + label:after {
@@ -82,11 +81,11 @@ input.toggle-round + label:after {
 input.toggle-round + label:before {
   right: 1px;
   background-color: #f1f1f1;
-  border-radius: 60px;
+  border-radius: 25px;
   transition: background 0.4s; }
 
 input.toggle-round + label:after {
-  width: 38px;
+  width: 22px;
   background-color: #fff;
   border-radius: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -96,7 +95,7 @@ input.toggle-round:checked + label:before {
   background-color: #8ce196; }
 
 input.toggle-round:checked + label:after {
-  margin-left: 40px; }
+  margin-left: 20px; }
 
 .loading-indicator .loading-indicator-inner {
   padding: 32px; }
@@ -251,7 +250,8 @@ input.toggle-round:checked + label:after {
 .cart {
   top: 0;
   min-width: 340px;
-  background-color: white; }
+  background-color: white;
+  overflow-x: hidden; }
   .cart.fixed {
     position: fixed; }
   .cart h2 {
@@ -384,50 +384,81 @@ input.toggle-round:checked + label:after {
       opacity: 0.4; }
 
 .cards-container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  text-align: center; }
-
-.toggle-button {
-  margin-bottom: 10px; }
+  max-width: 600px;
+  margin: 48px auto; }
 
 .card-field {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; }
+  display: flex; }
+  .card-field .contact-label {
+    width: 150px; }
+  .card-field .label {
+    width: 80px; }
+  .card-field p small {
+    color: #a2a2a2; }
+  .card-field .userinfo-input {
+    border: none;
+    width: 30px;
+    padding: 4px;
+    outline: none; }
+    .card-field .userinfo-input:enabled {
+      background-color: #f0f0f0; }
 
-.userinfo-input {
+.contactinfo-input {
   background-color: white;
   border: none;
-  text-align: center; }
+  width: 100%;
+  margin-right: 12px;
+  padding: 4px;
+  box-sizing: border-box;
+  outline: none; }
+  .contactinfo-input:enabled {
+    background-color: #f0f0f0; }
 
 .contact-container {
-  text-align: center; }
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 48px 32px 32px 32px; }
+  .contact-container .col-1 {
+    flex-grow: 1; }
+  .contact-container .col-2 {
+    flex-grow: 1; }
+  .contact-container .profile-name {
+    position: absolute;
+    top: -26px;
+    padding: 4px 16px;
+    color: white;
+    border: 1px solid #3EB7C1;
+    background-color: #3EB7C1; }
 
-.pofile-container {
-  text-align: center; }
+.btn-edit {
+  font-size: 12px;
+  color: #A76498;
+  cursor: pointer; }
 
 #toggle-container {
+  box-sizing: border-box;
+  margin-top: 16px;
+  padding: 32px;
+  background-color: white;
+  width: 50%; }
+
+.toggle-illness {
   display: flex;
-  flex-direction: column;
-  background-color: transparent;
-  justify-content: center; }
-
-#toggle-container p {
-  margin-right: 10px; }
-
-.card {
-  width: 150px; }
+  align-items: center; }
+  .toggle-illness p {
+    width: 160px; }
 
 .grid {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin-top: 32px; }
   .grid > .grid-item {
     position: relative;
     text-align: center;
     box-sizing: border-box;
-    width: calc(33.333% - 6px);
+    width: calc(33.39% - 6px);
     min-width: 260px;
     height: 140px;
     margin: 0 8px 24px 0;
