@@ -75,7 +75,6 @@ class ProfileForm extends Component {
     }
 
     this.props.updateActiveUserProfile(active_user);
-    // this.setEditableProfileFields();
   }
 
   setEditableUserFields() {
