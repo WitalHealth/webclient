@@ -20,16 +20,29 @@ class Locations extends Component {
   }
 
   handleSearch(e) {
-    const q = e.target.value;
+    const query = e.target.value;
     const { locations } = this.props;
-    const searchResults = locations.filter((location) => matchQueryToLocation(q, location));
+    const searchResults = locations.filter((location) => matchQueryToLocation(query, location));
 
-    if ( !searchResults.length && q.length) {
-      this.setState({ filteredLocations: [], searchActive: true });
+    if ( !searchResults.length && query.length ) {
+      this.setState({ filteredLocations: [], searchActive: !!query.length });
     }
     else {
-      this.setState({ filteredLocations: searchResults, searchActive: false });
+      this.setState({ filteredLocations: searchResults, searchActive: !query.length });
     }
+  }
+
+  renderLocations(locations) {
+    return locations.map((location, i) =>
+      <div key={i} className="grid-item">
+        <h3>{ location.city }</h3>
+        <div className="name">{ location.name }</div>
+        <div className="street">{ location.street }</div>
+        <a
+          target="_blank"
+          href={`https://www.google.se/maps/?q=${location.name}, ${this.prettyStreet(location.street)}`}
+        >Se karta och mer information</a>
+      </div>);
   }
 
   render() {
@@ -38,39 +51,22 @@ class Locations extends Component {
 
     return (
       <div className="locations">
-        <input type="search" placeholder="Hitta din station" onChange={(e) => this.handleSearch(e)}/>
+        <div className="search-container">
+          <input type="search" placeholder="Hitta din station" onChange={(e) => this.handleSearch(e)}/>
+          <div className="icon-search" />
+        </div>
         <div style={{ textAlign: 'center' }}>
           {
-            searchActive && 'Hittade ingen provstation'
+            (searchActive && !filteredLocations.length) &&
+            'Hittade ingen provstation'
           }
         </div>
 
         <div className="grid">
           {
-            (!filteredLocations.length && !searchActive) && locations.map((location, i) =>
-              <div key={i} className="grid-item">
-                <h3>{ location.city }</h3>
-                <div className="name">{ location.name }</div>
-                <div className="street">{ location.street }</div>
-                <a
-                  target="_blank"
-                  href={`https://www.google.se/maps/?q=${location.name}, ${this.prettyStreet(location.street)}`}
-                >Se karta och mer information</a>
-              </div>
-            )
-          }
-          {
-            !!filteredLocations.length && filteredLocations.map((location, i) =>
-              <div key={i} className="grid-item">
-                <h3>{ location.city }</h3>
-                <div className="name">{ location.name }</div>
-                <div className="street">{ location.street }</div>
-                <a
-                  target="_blank"
-                  href={`https://www.google.se/maps/?q=${location.name}, ${this.prettyStreet(location.street)}`}
-                >SE KARTA</a>
-              </div>
-            )
+            (!searchActive && !filteredLocations.length) ?
+              this.renderLocations(locations) :
+              this.renderLocations(filteredLocations)
           }
         </div>
       </div>

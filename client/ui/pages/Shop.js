@@ -8,43 +8,78 @@ import {
 import { connect } from 'react-redux';
 
 import Cart from '../components/Cart';
-import Packages from '../components/Packages';
-import Products from '../components/Products';
+import ProductPackages from '../components/ProductPackages';
+import ProductSingles from '../components/ProductSingles';
+import ProductSinglesCommon from '../components/ProductSinglesCommon';
 import DefaultLayout from '../layouts/defaultLayout';
+import LoadingIndicator from '../components/LoadingIndicator';
 
 import { fetchProductPacks } from '../../data/productPackages/productPackages.actions';
 import { fetchCart } from '../../data/cart/actions';
+import { matchQueryToProduct } from '../../utils/search.util';
 
 class Shop extends Component {
   state = {
     isSticky: false,
+    searchActive: false,
+    filteredPackages: this.props.productPackages,
+    filteredSinglesCommon: [],
   }
 
   componentDidMount() {
     this.props.fetchCart();
     this.props.fetchProductPacks();
+    console.log(this.props.productPackages);
+  }
+
+  handleSearch(e) {
+    const query = e.target.value;
+    const { productPackages, productSinglesCommon } = this.props;
+    const searchResults = productPackages.filter((productPackage) => matchQueryToProduct(query, productPackage));
+    const searchResults2 = productSinglesCommon.filter((productCommon) => matchQueryToProduct(query, productCommon));
+
+    this.setState({
+      searchActive: !!query.length,
+      filteredPackages: searchResults,
+      filteredSinglesCommon: searchResults2,
+    });
   }
 
   render() {
-    const { isSticky } = this.state;
-    const { match } = this.props;
+    const { isSticky, searchActive, filteredPackages, filteredSinglesCommon } = this.state;
+    const { match, productPackages, productSinglesCommon } = this.props;
 
     return (
       <div className="scroll-container" onWheel={() => this.handleFixed()}>
         <DefaultLayout>
-          <div className="tabs">
-            <NavLink exact to="/prover">Provpaket</NavLink>
-            <NavLink to="/prover/alla">Enskilda Prover</NavLink>
-          </div>
-
 
           <div className="flex">
             <div className="test-list">
-              <Switch >
-                <Route exact path={`${match.url}`} component={Packages}/>
-                <Route path={`${match.url}/alla`} component={Products}/>
-              </Switch>
+              <div style={{ textAlign: 'center' }}>
+              </div>
+              <div className="tabs">
+                <NavLink exact
+                         to="/prover">Provpaket { searchActive ? `(${filteredPackages.length})` : `(${productPackages.length})` }</NavLink>
+                <NavLink to="/prover/alla">Enskilda
+                  Prover { searchActive ? `(${filteredSinglesCommon.length})` : `(${productSinglesCommon.length})` }</NavLink>
+                <NavLink to="/prover/ovanliga">Ovanliga Prover</NavLink>
+              </div>
+              <div className="search-container">
+                <input type="search" placeholder="Hitta prov"
+                       onChange={(e) => this.handleSearch(e)}/>
+                <div className="icon-search" />
+              </div>
+              <LoadingIndicator message="Hämtar Prover" isLoading={!productPackages.length}>
+                <Switch >
+                  <Route exact path={`${match.url}`} render={() => <ProductPackages
+                    products={ searchActive ? filteredPackages : productPackages }/>}/>
+                  <Route path={`${match.url}/alla`} render={() => <ProductSinglesCommon
+                    products={ searchActive ? filteredSinglesCommon : productSinglesCommon }/> }/>
+                </Switch>
+                <Route path={`${match.url}/ovanliga`} component={ProductSingles}/>
+              </LoadingIndicator>
             </div>
+
             <div className="side-bar">
               <Cart
                 handleRemove={(cartItem) => this.removeFromCart(cartItem)}
@@ -61,10 +96,11 @@ class Shop extends Component {
   // TODO: better solution cart element from top instead of static pixel height window
   handleFixed() {
     const { isSticky } = this.state;
-    if ( (window.scrollY > 96 + 32) && !isSticky ) {
+    const fromTop = 94;
+    if ( (window.scrollY > fromTop) && !isSticky ) {
       this.setState({ isSticky: true });
     }
-    else if ( (window.scrollY < 96 + 32) && isSticky ) {
+    else if ( (window.scrollY < fromTop) && isSticky ) {
       this.setState({ isSticky: false });
     }
   }
@@ -85,7 +121,11 @@ class Shop extends Component {
 
 export default withRouter(
   connect(
-    null,
+    state => ({
+      productPackages: state.productPackages,
+      productSinglesCommon: state.productSinglesCommon,
+      productSingles: state.productSingles,
+    }),
     { fetchProductPacks, fetchCart }
   )(Shop));
 

@@ -56,14 +56,14 @@
   height: 0;
   &.test-fade-enter-active {
     opacity: 1;
-    height: 74px;
+    height: 150px;
     transition: all 400ms;
   }
 }
 
 .test-fade-leave {
   opacity: 1;
-  height: 74px;
+  height:150px;
   &.test-fade-leave-active {
     opacity: 0.01;
     height: 0;

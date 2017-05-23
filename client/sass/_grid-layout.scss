@@ -15,6 +15,7 @@
     margin: 0 8px 24px 0;
     padding: 24px;
     background-color: white;
+    transition: all 500ms;
     @media all and (min-width: 816px){
       &:nth-child(3n) {
         margin: 0 0 8px 0;
@@ -24,7 +25,7 @@
       width: 100%;
       margin: 0 0 24px 0;
     }
-    &.grid-item:hover{
+    &:hover {
       background-color: #fafafa;
     }
     h3 {
