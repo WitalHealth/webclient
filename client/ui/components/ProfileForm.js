@@ -42,13 +42,13 @@ class ProfileForm extends Component {
     user.profile.height = Number.parseInt(this.height.value);
     user.profile.weight = Number.parseInt(this.weight.value);
     user.profile.waist = Number.parseInt(this.waist.value);
-    user.profile.hasDiabetes = (this.diabetes.checked === true) ? true : false;
-    user.profile.hasAsthma = (this.asthma.checked === true) ? true : false;
-    user.profile.hasAllergia = (this.allergia.checked === true) ? true : false;
-    user.profile.hasCAD = (this.cad.checked === true) ? true : 0;
-    user.profile.hasCarbonDisease = (this.carbonDisease.checked === true) ? true : false;
-    user.profile.hasDepression = (this.depression.checked === true) ? true : false;
-    user.profile.isSmoker = (this.smoker.checked === true) ? true : false;
+    user.profile.hasDiabetes = this.diabetes.checked;
+    user.profile.hasAsthma = this.asthma.checked;
+    user.profile.hasAllergia = this.allergia.checked;
+    user.profile.hasCAD = this.cad.checked;
+    user.profile.hasCarbonDisease = this.carbonDisease.checked;
+    user.profile.hasDepression = this.depression.checked;
+    user.profile.isSmoker = this.smoker.checked;
 
     return user;
   }
