@@ -27,7 +27,7 @@ const Cart = ({ cart, removeFromCart, isSticky, location }) => {
       onMouseLeave={() => document.body.style.overflow = 'scroll'}
       onClick={() => document.body.style.overflow = 'scroll'}
     >
-      <h2>Din beställning</h2>
+      <h2>Valda prover</h2>
       <div className="cart-inner">
         {
           !cart.length &&

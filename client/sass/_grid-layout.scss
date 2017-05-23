@@ -4,12 +4,12 @@
   display: flex;
   flex-wrap: wrap;
   //background-color: rgba(248, 194, 255, 0.27);
-  //margin: 0 -8px;
+  margin-top: 32px;
   > .grid-item {
     position: relative;
     text-align: center;
     box-sizing: border-box;
-    width: calc(33.333% - 6px);
+    width: calc(33.39% - 6px);
     min-width: 260px;
     height: 140px;
     margin: 0 8px 24px 0;
