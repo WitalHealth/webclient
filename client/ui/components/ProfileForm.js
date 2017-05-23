@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../data/user/actions';
+import ToggleIllness from './ToggleIllness';
 
 class ProfileForm extends Component {
   constructor(props) {
@@ -11,208 +12,211 @@ class ProfileForm extends Component {
 
   handleUserSubmit(e) {
     e.preventDefault();
-    let user = this.setUserValues();
-    this.props.updateActiveUser(user);
-    this.setEditableUserFields();
+    this.setUserValues();
 
   }
 
   handleProfileSubmit(e) {
     e.preventDefault();
-    let user = this.setProfileValues();
-    this.props.updateActiveUserProfile(user);
-    this.setEditableProfileFields();
+    this.setProfileValues();
   }
 
-  handleCheckboxSubmit(e) {
-    let user = this.setProfileValues();
-    this.props.updateActiveUserProfile(user);
+  handleCheckboxSubmit(value, name) {
+    this.setProfileToggleValues(value, name);
   }
 
   setUserValues() {
-    let user = this.props.active_user;
-    user.email = this.email.value;
-    user.phone = this.phone.value;
-    return user;
+    let { active_user } = this.props;
+    active_user.email = this.email.value;
+    active_user.phone = this.phone.value;
+
+    this.props.updateActiveUser(active_user);
+    this.setEditableUserFields();
   }
 
   setProfileValues() {
-    let user = this.props.active_user;
-    console.log(this.asthma.checked);
-    user.profile.height = Number.parseInt(this.height.value);
-    user.profile.weight = Number.parseInt(this.weight.value);
-    user.profile.waist = Number.parseInt(this.waist.value);
-    user.profile.hasDiabetes = this.diabetes.checked;
-    user.profile.hasAsthma = this.asthma.checked;
-    user.profile.hasAllergia = this.allergia.checked;
-    user.profile.hasCAD = this.cad.checked;
-    user.profile.hasCarbonDisease = this.carbonDisease.checked;
-    user.profile.hasDepression = this.depression.checked;
-    user.profile.isSmoker = this.smoker.checked;
+    let { active_user } = this.props;
 
-    return user;
+    active_user.profile.height = Number.parseInt(this.height.value);
+    active_user.profile.weight = Number.parseInt(this.weight.value);
+    active_user.profile.waist = Number.parseInt(this.waist.value);
+
+    this.props.updateActiveUserProfile(active_user);
+    this.setEditableProfileFields();
+  }
+
+  setProfileToggleValues(value, name) {
+    let { active_user } = this.props;
+
+    switch ( name ) {
+      case 'Diabetes':
+        active_user.profile.hasDiabetes = value;
+        break;
+      case 'Astma':
+        active_user.profile.hasAsthma = value;
+        break;
+      case 'Allergi':
+        active_user.profile.hasAllergia = value;
+        break;
+      case 'CAD':
+        active_user.profile.hasCad = value;
+        break;
+      case 'KOL':
+        active_user.profile.hasCarbonDisease = value;
+        break;
+      case 'Depression':
+        active_user.profile.hasDepression = value;
+        break;
+      case 'Rökare':
+        active_user.profile.isSmoker = value;
+        break;
+      default:
+        console.error('no illness by that name', name);
+    }
+
+    this.props.updateActiveUserProfile(active_user);
+    // this.setEditableProfileFields();
   }
 
   setEditableUserFields() {
-    this.setState({disabledUserFields: !this.state.disabledUserFields})
+    this.setState({ disabledUserFields: !this.state.disabledUserFields })
   }
 
   setEditableProfileFields() {
-    this.setState({disabledProfileFields: !this.state.disabledProfileFields})
+    this.setState({ disabledProfileFields: !this.state.disabledProfileFields })
   }
 
   render() {
     const { active_user } = this.props;
+    const illnesses = active_user.profile ?
+      [
+        {
+          name: 'Diabetes',
+          hasIllness: active_user.profile.hasDiabetes
+        },
+        {
+          name: 'Astma',
+          hasIllness: active_user.profile.hasAsthma
+        },
+        {
+          name: 'Allergi',
+          hasIllness: active_user.profile.hasAllergia
+        },
+        {
+          name: 'CAD',
+          hasIllness: active_user.profile.hasCAD
+        },
+        {
+          name: 'KOL',
+          hasIllness: active_user.profile.hasCarbonDisease
+        },
+        {
+          name: 'Depression',
+          hasIllness: active_user.profile.hasDepression
+        },
+        {
+          name: 'Rökare',
+          hasIllness: active_user.profile.isSmoker
+        },
+      ] : [];
+
     return (
       <div>
-        { active_user.id && <div>
-        <h1 className="profileName">{ active_user.firstName } { active_user.lastName }</h1>
-          <div className="cards-container">
-            <div className="card-container">
-              <div className="contact-container card">
-              {
-                this.state.disabledUserFields?
-                <button type="button" onClick={() => this.setEditableUserFields()}>Edit</button> :
-                <button type="button" onClick={(e) => this.handleUserSubmit(e)}>Save</button>
-              }
-                <p>E-postadress</p>
-                <div className="card-field">
-                  <input
-                    className="userinfo-input"
-                    type="text"
-                    defaultValue={ active_user.email }
-                    ref={inputElem => this.email = inputElem}
-                    disabled = {(this.state.disabledUserFields)? "disabled" : ""}
-                  />
+        {
+          active_user.id &&
+            <div className="cards-container">
+              <div className="contact-container">
+                <h1 className="profile-name">{ active_user.firstName } { active_user.lastName }</h1>
+                <div className="col-1">
+                  {
+                    this.state.disabledUserFields ?
+                      <span className="btn-edit" onClick={() => this.setEditableUserFields()}>Ändra</span> :
+                      <span className="btn-edit" type="button" onClick={(e) => this.handleUserSubmit(e)}>Spara</span>
+                  }
+                  <div className="card-field">
+                    <p className="contact-label">E-postadress</p>
+                    <input
+                      className="contactinfo-input"
+                      type="text"
+                      defaultValue={ active_user.email }
+                      ref={inputElem => this.email = inputElem}
+                      disabled={(this.state.disabledUserFields) ? "disabled" : ""}
+                    />
+                  </div>
+                  <div className="card-field">
+                    <p className="contact-label">Mobilnummer</p>
+                    <input
+                      className="contactinfo-input"
+                      defaultValue={ active_user.phone }
+                      ref={inputElem => this.phone = inputElem}
+                      disabled={(this.state.disabledUserFields) ? "disabled" : ""}
+                    />
+                  </div>
                 </div>
-                <p>Mobilnummer</p>
-                <div className="card-field">
-                  <input
-                    className="userinfo-input"
-                    defaultValue={ active_user.phone }
-                    ref={inputElem => this.phone = inputElem}
-                    disabled = {(this.state.disabledUserFields)? "disabled" : ""}
-                  />
+                <div className="col-2">
+                  {
+                    this.state.disabledProfileFields ?
+                      <span className="btn-edit" onClick={() => this.setEditableProfileFields()}>Ändra</span> :
+                      <span className="btn-edit" onClick={(e) => this.handleProfileSubmit(e)}>Spara</span>
+                  }
+                  <div className="card-field">
+                    <p className="label">Längd
+                      <small>(cm)</small>
+                    </p>
+                    <input
+                      className="userinfo-input"
+                      type="text"
+                      defaultValue={ active_user.profile.height }
+                      ref={inputElem => this.height = inputElem}
+                      disabled={(this.state.disabledProfileFields) ? "disabled" : ""}
+                    />
+                  </div>
+                  <div className="card-field">
+                    <p className="label">Vikt
+                      <small>(kg)</small>
+                    </p>
+                    <input
+                      className="userinfo-input"
+                      type="text"
+                      defaultValue={ active_user.profile.weight }
+                      ref={inputElem => this.weight = inputElem}
+                      disabled={(this.state.disabledProfileFields) ? "disabled" : ""}
+                    />
+                  </div>
+                  <div className="card-field">
+                    <p className="label">Midja
+                      <small>(cm)</small>
+                    </p>
+                    <input
+                      className="userinfo-input"
+                      type="text"
+                      defaultValue={ active_user.profile.waist }
+                      ref={inputElem => this.waist = inputElem}
+                      disabled={(this.state.disabledProfileFields) ? "disabled" : ""}
+                    />
+                  </div>
                 </div>
+
               </div>
-              { active_user.profile &&
-              <div className="pofile-container card">
+
+              <div className="card-container" id="toggle-container">
                 {
-                  this.state.disabledProfileFields?
-                  <button type="button" onClick={() => this.setEditableProfileFields()}>Edit</button> :
-                  <button type="button" onClick={(e) => this.handleProfileSubmit(e)}>Save</button>
+                  illnesses.map((illness, i) =>
+                    <ToggleIllness
+                      key={i}
+                      name={illness.name}
+                      hasIllness={illness.hasIllness}
+                      handleChecked={(value, name) => this.handleCheckboxSubmit(value, name)}
+                    />
+                  )
                 }
-                <p>Height</p>
-                <div className="card-field">
-                <input
-                  className="userinfo-input"
-                  type="text"
-                  defaultValue={ active_user.profile.height }
-                  ref={inputElem => this.height = inputElem}
-                  disabled = {(this.state.disabledProfileFields)? "disabled" : ""}
-                />
-                </div>
-                <p>Weight</p>
-                <div className="card-field">
-                <input
-                  className="userinfo-input"
-                  type="text"
-                  defaultValue={ active_user.profile.weight }
-                  ref={inputElem => this.weight = inputElem}
-                  disabled = {(this.state.disabledProfileFields)? "disabled" : ""}
-                />
-                </div>
-                <p>Waist</p>
-                <div className="card-field">
-                <input
-                  className="userinfo-input"
-                  type="text"
-                  defaultValue={ active_user.profile.waist }
-                  ref={inputElem => this.waist = inputElem}
-                  disabled = {(this.state.disabledProfileFields)? "disabled" : ""}
-                />
-                </div>
-              </div>
-              }
-            </div>
-            <div className="toggle-container card-container" id="toggle-container">
-              <div className="card-field">
-              <p>Diabetes</p>
-                <input
-                  ref={inputElem => this.diabetes = inputElem}
-                  id="toggle-1" className="toggle toggle-round"
-                  type="checkbox"
-                  defaultChecked={(active_user.profile.hasDiabetes === 1)? true : false}
-                  onChange={(e) => this.handleCheckboxSubmit(e)}/>
-                <label htmlFor="toggle-1" className="toggle-button"></label>
-              </div>
-              <div className="card-field">
-              <p>Astma</p>
-                <input
-                  ref={inputElem => this.asthma = inputElem}
-                  id="toggle-2" className="toggle toggle-round"
-                  type="checkbox"
-                  defaultChecked={(active_user.profile.hasAsthma === 1)? true : false}
-                  onChange={(e) => this.handleCheckboxSubmit(e)}/>
-                <label htmlFor="toggle-2"className="toggle-button"></label>
-              </div>
-              <div className="card-field">
-              <p>Allergi</p>
-                <input
-                  ref={inputElem => this.allergia = inputElem}
-                  id="toggle-3" className="toggle toggle-round"
-                  type="checkbox"
-                  defaultChecked={(active_user.profile.hasAllergia === 1)? true : false}
-                  onChange={(e) => this.handleCheckboxSubmit(e)}/>
-                <label htmlFor="toggle-3"className="toggle-button"></label>
-              </div>
-              <div className="card-field">
-              <p>CAD</p>
-                <input
-                  ref={inputElem => this.cad = inputElem}
-                  id="toggle-4" className="toggle toggle-round"
-                  type="checkbox"
-                  defaultChecked={(active_user.profile.hasCAD === 1)? true : false}
-                  onChange={(e) => this.handleCheckboxSubmit(e)}/>
-                <label htmlFor="toggle-4"className="toggle-button"></label>
-              </div>
-              <div className="card-field">
-                <p>KOL</p>
-                <input
-                  ref={inputElem => this.carbonDisease = inputElem}
-                  id="toggle-5" className="toggle toggle-round"
-                  type="checkbox"
-                  defaultChecked={(active_user.profile.hasCarbonDisease === 1)? true : false}
-                  onChange={(e) => this.handleCheckboxSubmit(e)}/>
-                <label htmlFor="toggle-5"className="toggle-button"></label>
-              </div>
-              <div className="card-field">
-                <p>Depression</p>
-                <input
-                  ref={inputElem => this.depression = inputElem}
-                  id="toggle-6" className="toggle toggle-round"
-                  type="checkbox"
-                  defaultChecked={(active_user.profile.hasDepression === 1)? true : false}
-                  onChange={(e) => this.handleCheckboxSubmit(e)}/>
-                <label htmlFor="toggle-6" className="toggle-button"></label>
-              </div>
-              <div className="card-field">
-                <p>Rökare</p>
-                <input
-                  ref={inputElem => this.smoker = inputElem}
-                  id="toggle-7" className="toggle toggle-round"
-                  type="checkbox"
-                  defaultChecked={(active_user.profile.isSmoker === 1)? true : false}
-                  onChange={(e) => this.handleCheckboxSubmit(e)}/>
-                <label htmlFor="toggle-7"className="toggle-button"></label>
               </div>
             </div>
-          </div>
-        </div>}
+        }
       </div>
     );
   }
-};
+}
 
 
 export default withRouter(
