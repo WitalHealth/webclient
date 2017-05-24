@@ -123,82 +123,88 @@ class ProfileForm extends Component {
       <div>
         {
           active_user.id &&
-            <div className="cards-container">
-              <div className="contact-container">
-                <h1 className="profile-name">{ active_user.firstName } { active_user.lastName }</h1>
-                <div className="col-1">
+          <div className="cards-container">
+            <div className="contact-container">
+              <h1 className="profile-name">{ active_user.firstName } { active_user.lastName }</h1>
+              <div className="col-1">
+                <div className="section-description">
+                  <h2>Kontaktuppgifter</h2>
                   {
                     this.state.disabledUserFields ?
                       <span className="btn-edit" onClick={() => this.setEditableUserFields()}>Ändra</span> :
                       <span className="btn-edit" type="button" onClick={(e) => this.handleUserSubmit(e)}>Spara</span>
                   }
-                  <div className="card-field">
-                    <p className="contact-label">E-postadress</p>
-                    <input
-                      className="contactinfo-input"
-                      type="text"
-                      defaultValue={ active_user.email }
-                      ref={inputElem => this.email = inputElem}
-                      disabled={(this.state.disabledUserFields) ? "disabled" : ""}
-                    />
-                  </div>
-                  <div className="card-field">
-                    <p className="contact-label">Mobilnummer</p>
-                    <input
-                      className="contactinfo-input"
-                      defaultValue={ active_user.phone }
-                      ref={inputElem => this.phone = inputElem}
-                      disabled={(this.state.disabledUserFields) ? "disabled" : ""}
-                    />
-                  </div>
                 </div>
-                <div className="col-2">
+
+                <div className="card-field">
+                  <div className="contact-label">E-postadress</div>
+                  <input
+                    className="contactinfo-input"
+                    type="text"
+                    defaultValue={ active_user.email }
+                    ref={inputElem => this.email = inputElem}
+                    disabled={(this.state.disabledUserFields) ? "disabled" : ""}
+                  />
+                </div>
+                <div className="card-field">
+                  <div className="contact-label">Mobilnummer</div>
+                  <input
+                    className="contactinfo-input"
+                    defaultValue={ active_user.phone }
+                    ref={inputElem => this.phone = inputElem}
+                    disabled={(this.state.disabledUserFields) ? "disabled" : ""}
+                  />
+                </div>
+              </div>
+
+              <div className="col-2">
+                <div className="section-description">
+                  <h2>Mått</h2>
                   {
                     this.state.disabledProfileFields ?
                       <span className="btn-edit" onClick={() => this.setEditableProfileFields()}>Ändra</span> :
                       <span className="btn-edit" onClick={(e) => this.handleProfileSubmit(e)}>Spara</span>
                   }
-                  <div className="card-field">
-                    <p className="label">Längd
-                      <small>(cm)</small>
-                    </p>
-                    <input
-                      className="userinfo-input"
-                      type="text"
-                      defaultValue={ active_user.profile.height }
-                      ref={inputElem => this.height = inputElem}
-                      disabled={(this.state.disabledProfileFields) ? "disabled" : ""}
-                    />
-                  </div>
-                  <div className="card-field">
-                    <p className="label">Vikt
-                      <small>(kg)</small>
-                    </p>
-                    <input
-                      className="userinfo-input"
-                      type="text"
-                      defaultValue={ active_user.profile.weight }
-                      ref={inputElem => this.weight = inputElem}
-                      disabled={(this.state.disabledProfileFields) ? "disabled" : ""}
-                    />
-                  </div>
-                  <div className="card-field">
-                    <p className="label">Midja
-                      <small>(cm)</small>
-                    </p>
-                    <input
-                      className="userinfo-input"
-                      type="text"
-                      defaultValue={ active_user.profile.waist }
-                      ref={inputElem => this.waist = inputElem}
-                      disabled={(this.state.disabledProfileFields) ? "disabled" : ""}
-                    />
-                  </div>
                 </div>
-
+                <div className="card-field measurements">
+                  <span className="label">Längd</span>
+                  <input
+                    className="userinfo-input"
+                    type="text"
+                    defaultValue={ active_user.profile.height }
+                    ref={inputElem => this.height = inputElem}
+                    disabled={(this.state.disabledProfileFields) ? "disabled" : ""}
+                  />
+                  <small>cm</small>
+                </div>
+                <div className="card-field measurements">
+                  <span className="label">Vikt</span>
+                  <input
+                    className="userinfo-input"
+                    type="text"
+                    defaultValue={ active_user.profile.weight }
+                    ref={inputElem => this.weight = inputElem}
+                    disabled={(this.state.disabledProfileFields) ? "disabled" : ""}
+                  />
+                  <small>kg</small>
+                </div>
+                <div className="card-field measurements">
+                  <span className="label">Midja</span>
+                  <input
+                    className="userinfo-input"
+                    type="text"
+                    defaultValue={ active_user.profile.waist }
+                    ref={inputElem => this.waist = inputElem}
+                    disabled={(this.state.disabledProfileFields) ? "disabled" : ""}
+                  />
+                  <small>cm</small>
+                </div>
               </div>
 
-              <div className="card-container" id="toggle-container">
+            </div>
+
+            <div id="toggle-container">
+              <div className="inner">
                 {
                   illnesses.map((illness, i) =>
                     <ToggleIllness
@@ -211,6 +217,7 @@ class ProfileForm extends Component {
                 }
               </div>
             </div>
+          </div>
         }
       </div>
     );

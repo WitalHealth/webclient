@@ -4,37 +4,58 @@
 }
 
 .card-field {
-  display: flex;
+  &.measurements {
+    margin-bottom: 12px;
+  }
   .contact-label {
     width: 150px;
+    font-size: 12px;
+    color: #a2a2a2;
   }
   .label {
-    width: 80px;
+    font-size: 12px;
+    color: #a2a2a2;
+    display: inline-block;
+    min-width: 40px;
   }
   p small {
     color: #a2a2a2;
   }
   .userinfo-input {
-    border: none;
     width: 30px;
     padding: 4px;
     outline: none;
+    border-width: 0 0 1px 0;
+    border-color: transparent;
+    border-style: solid;
+    font-size: 16px;
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 300;
+    text-align: right;
     &:enabled {
-      background-color: #f0f0f0;
+      border-bottom: 1px solid $dull-cyan;
     }
   }
 }
 
 .contactinfo-input {
-  background-color: white;
-  border: none;
-  width: 100%;
-  margin-right: 12px;
-  padding: 4px;
   box-sizing: border-box;
+  width: 80%;
+  margin-right: 12px;
+  padding: 4px 0;
+  background-color: white;
   outline: none;
+  border-width: 0 0 1px 0;
+  border-color: transparent;
+  border-style: solid;
+  font-size: 16px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 300;
   &:enabled {
-    background-color: #f0f0f0;
+    border-bottom: 1px solid $dull-cyan;
+  }
+  &:disabled {
+    color: #000;
   }
 }
 
@@ -44,20 +65,39 @@
   justify-content: center;
   background-color: white;
   padding: 48px 32px 32px 32px;
+  @media all and (max-width: 500px) {
+    display: block;
+  }
   .col-1 {
     flex-grow: 1;
+    @media all and (max-width: 500px) {
+      max-width: 200px;
+      margin: 0 auto;
+    }
   }
   .col-2 {
     flex-grow: 1;
+    @media all and (max-width: 500px) {
+      max-width: 200px;
+      margin: 32px auto 0 auto;
+    }
   }
   .profile-name {
     position: absolute;
     top: -26px;
+    left: 50%;
+    white-space: nowrap;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
     //background-color: white;
     padding: 4px 16px;
     color: white;
-    border: 1px solid $dull-cyan;
     background-color: $dull-cyan;
+  }
+  .section-description {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
   }
 }
 
@@ -65,6 +105,7 @@
   font-size: 12px;
   color: $violet;
   cursor: pointer;
+  margin: 0 16px;
 }
 
 #toggle-container {
@@ -73,13 +114,23 @@
   padding: 32px;
   background-color: white;
   width: 50%;
+  min-width: 288px;
+  @media all and (max-width: 500px) {
+    width: 100%;
+  }
+  .inner {
+    @media all and (max-width: 500px) {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+  }
 }
 
 .toggle-illness {
   display: flex;
-  //justify-content: center;
   align-items: center;
   p {
     width: 160px;
   }
+  margin: 0 auto;
 }

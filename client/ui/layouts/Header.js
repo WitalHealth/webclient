@@ -25,24 +25,24 @@ const Header = ({ orderBadge }) => (
             <div>Prover</div>
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/provguiden">
-            <img className="icon" src={guideIcon} alt="icon"/>
-            <div>Provguiden</div>
-          </NavLink>
-        </li>
+        {/*<li>*/}
+          {/*<NavLink to="/provguiden">*/}
+            {/*<img className="icon" src={guideIcon} alt="icon"/>*/}
+            {/*<div>Provguiden</div>*/}
+          {/*</NavLink>*/}
+        {/*</li>*/}
         <li>
           <NavLink to="/provstationer">
             <img className="icon" src={mapPinIcon} alt="icon"/>
             <div>Provstationer</div>
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/meddelanden">
-            <img className="icon" src={messagesIcon} alt="icon"/>
-            <div>Meddelanden</div>
-          </NavLink>
-        </li>
+        {/*<li>*/}
+          {/*<NavLink to="/meddelanden">*/}
+            {/*<img className="icon" src={messagesIcon} alt="icon"/>*/}
+            {/*<div>Meddelanden</div>*/}
+          {/*</NavLink>*/}
+        {/*</li>*/}
         <li>
           <NavLink to="/resultat">
             <img className="icon" src={resultsIcon} alt="icon"/>
