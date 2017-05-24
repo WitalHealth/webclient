@@ -15656,24 +15656,33 @@ var ProfileForm = function (_Component) {
             _react2.default.createElement(
               'div',
               { className: 'col-1' },
-              this.state.disabledUserFields ? _react2.default.createElement(
-                'span',
-                { className: 'btn-edit', onClick: function onClick() {
-                    return _this2.setEditableUserFields();
-                  } },
-                '\xC4ndra'
-              ) : _react2.default.createElement(
-                'span',
-                { className: 'btn-edit', type: 'button', onClick: function onClick(e) {
-                    return _this2.handleUserSubmit(e);
-                  } },
-                'Spara'
+              _react2.default.createElement(
+                'div',
+                { className: 'section-description' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'Kontaktuppgifter'
+                ),
+                this.state.disabledUserFields ? _react2.default.createElement(
+                  'span',
+                  { className: 'btn-edit', onClick: function onClick() {
+                      return _this2.setEditableUserFields();
+                    } },
+                  '\xC4ndra'
+                ) : _react2.default.createElement(
+                  'span',
+                  { className: 'btn-edit', type: 'button', onClick: function onClick(e) {
+                      return _this2.handleUserSubmit(e);
+                    } },
+                  'Spara'
+                )
               ),
               _react2.default.createElement(
                 'div',
                 { className: 'card-field' },
                 _react2.default.createElement(
-                  'p',
+                  'div',
                   { className: 'contact-label' },
                   'E-postadress'
                 ),
@@ -15691,7 +15700,7 @@ var ProfileForm = function (_Component) {
                 'div',
                 { className: 'card-field' },
                 _react2.default.createElement(
-                  'p',
+                  'div',
                   { className: 'contact-label' },
                   'Mobilnummer'
                 ),
@@ -15708,31 +15717,35 @@ var ProfileForm = function (_Component) {
             _react2.default.createElement(
               'div',
               { className: 'col-2' },
-              this.state.disabledProfileFields ? _react2.default.createElement(
-                'span',
-                { className: 'btn-edit', onClick: function onClick() {
-                    return _this2.setEditableProfileFields();
-                  } },
-                '\xC4ndra'
-              ) : _react2.default.createElement(
-                'span',
-                { className: 'btn-edit', onClick: function onClick(e) {
-                    return _this2.handleProfileSubmit(e);
-                  } },
-                'Spara'
+              _react2.default.createElement(
+                'div',
+                { className: 'section-description' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'M\xE5tt'
+                ),
+                this.state.disabledProfileFields ? _react2.default.createElement(
+                  'span',
+                  { className: 'btn-edit', onClick: function onClick() {
+                      return _this2.setEditableProfileFields();
+                    } },
+                  '\xC4ndra'
+                ) : _react2.default.createElement(
+                  'span',
+                  { className: 'btn-edit', onClick: function onClick(e) {
+                      return _this2.handleProfileSubmit(e);
+                    } },
+                  'Spara'
+                )
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'card-field' },
+                { className: 'card-field measurements' },
                 _react2.default.createElement(
-                  'p',
+                  'span',
                   { className: 'label' },
-                  'L\xE4ngd',
-                  _react2.default.createElement(
-                    'small',
-                    null,
-                    '(cm)'
-                  )
+                  'L\xE4ngd'
                 ),
                 _react2.default.createElement('input', {
                   className: 'userinfo-input',
@@ -15742,20 +15755,20 @@ var ProfileForm = function (_Component) {
                     return _this2.height = inputElem;
                   },
                   disabled: this.state.disabledProfileFields ? "disabled" : ""
-                })
+                }),
+                _react2.default.createElement(
+                  'small',
+                  null,
+                  'cm'
+                )
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'card-field' },
+                { className: 'card-field measurements' },
                 _react2.default.createElement(
-                  'p',
+                  'span',
                   { className: 'label' },
-                  'Vikt',
-                  _react2.default.createElement(
-                    'small',
-                    null,
-                    '(kg)'
-                  )
+                  'Vikt'
                 ),
                 _react2.default.createElement('input', {
                   className: 'userinfo-input',
@@ -15765,20 +15778,20 @@ var ProfileForm = function (_Component) {
                     return _this2.weight = inputElem;
                   },
                   disabled: this.state.disabledProfileFields ? "disabled" : ""
-                })
+                }),
+                _react2.default.createElement(
+                  'small',
+                  null,
+                  'kg'
+                )
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'card-field' },
+                { className: 'card-field measurements' },
                 _react2.default.createElement(
-                  'p',
+                  'span',
                   { className: 'label' },
-                  'Midja',
-                  _react2.default.createElement(
-                    'small',
-                    null,
-                    '(cm)'
-                  )
+                  'Midja'
                 ),
                 _react2.default.createElement('input', {
                   className: 'userinfo-input',
@@ -15788,23 +15801,32 @@ var ProfileForm = function (_Component) {
                     return _this2.waist = inputElem;
                   },
                   disabled: this.state.disabledProfileFields ? "disabled" : ""
-                })
+                }),
+                _react2.default.createElement(
+                  'small',
+                  null,
+                  'cm'
+                )
               )
             )
           ),
           _react2.default.createElement(
             'div',
-            { className: 'card-container', id: 'toggle-container' },
-            illnesses.map(function (illness, i) {
-              return _react2.default.createElement(_ToggleIllness2.default, {
-                key: i,
-                name: illness.name,
-                hasIllness: illness.hasIllness,
-                handleChecked: function handleChecked(value, name) {
-                  return _this2.handleCheckboxSubmit(value, name);
-                }
-              });
-            })
+            { id: 'toggle-container' },
+            _react2.default.createElement(
+              'div',
+              { className: 'inner' },
+              illnesses.map(function (illness, i) {
+                return _react2.default.createElement(_ToggleIllness2.default, {
+                  key: i,
+                  name: illness.name,
+                  hasIllness: illness.hasIllness,
+                  handleChecked: function handleChecked(value, name) {
+                    return _this2.handleCheckboxSubmit(value, name);
+                  }
+                });
+              })
+            )
           )
         )
       );
@@ -15931,40 +15953,12 @@ var Header = function Header(_ref) {
           null,
           _react2.default.createElement(
             _reactRouterDom.NavLink,
-            { to: '/provguiden' },
-            _react2.default.createElement('img', { className: 'icon', src: guideIcon, alt: 'icon' }),
-            _react2.default.createElement(
-              'div',
-              null,
-              'Provguiden'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'li',
-          null,
-          _react2.default.createElement(
-            _reactRouterDom.NavLink,
             { to: '/provstationer' },
             _react2.default.createElement('img', { className: 'icon', src: mapPinIcon, alt: 'icon' }),
             _react2.default.createElement(
               'div',
               null,
               'Provstationer'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'li',
-          null,
-          _react2.default.createElement(
-            _reactRouterDom.NavLink,
-            { to: '/meddelanden' },
-            _react2.default.createElement('img', { className: 'icon', src: messagesIcon, alt: 'icon' }),
-            _react2.default.createElement(
-              'div',
-              null,
-              'Meddelanden'
             )
           )
         ),
