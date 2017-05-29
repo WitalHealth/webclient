@@ -4,7 +4,8 @@ import productSingles from './productSingles/productSingles.reducer';
 import productSinglesCommon from './productSinglesCommon/productSinglesCommon.reducer';
 import orderBadge from './badges/order/reducer';
 import locations from './locations/locations.reducer';
-import active_user from './user/reducer'
+import active_user from './user/reducer';
+import observations from './observations/observations.reducer';
 
 export {
   cart,
@@ -13,5 +14,6 @@ export {
   productSinglesCommon,
   orderBadge,
   active_user,
-  locations
+  locations,
+  observations,
 }
