@@ -32,7 +32,7 @@ class Results extends Component {
           <div className="dropdown-content">
             <div>{
              uniqueTests.map((uT, i) =>
-              <a key={i}>{uT}</a>
+              <a key={i} onClick={(e) => this.showTest(e, uT)}>{uT}</a>
             )
           }</div>
           </div>
