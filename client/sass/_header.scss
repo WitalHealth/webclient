@@ -11,6 +11,14 @@
       display: flex;
       justify-content: flex-end;
       width: 100%;
+      background-color: white;
+      @media all and (max-width: 620px) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 900;
+        border-top: 1px solid #e2e2e2;
+      }
       li {
         display: flex;
         align-items: center;

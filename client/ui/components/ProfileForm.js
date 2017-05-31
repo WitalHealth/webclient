@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../data/user/actions';
+import { logOut } from '../../data/login/login.actions';
 import ToggleIllness from './ToggleIllness';
 
 class ProfileForm extends Component {
@@ -85,6 +86,12 @@ class ProfileForm extends Component {
     this.setState({ disabledProfileFields: !this.state.disabledProfileFields })
   }
 
+  handleLogOut() {
+    console.log('log out');
+    this.props.logOut();
+    this.props.history.push('/');
+  }
+
   render() {
     const { active_user } = this.props;
     const illnesses = active_user.profile ?
@@ -124,6 +131,7 @@ class ProfileForm extends Component {
         {
           active_user.id &&
           <div className="cards-container">
+            <button onClick={ () => this.handleLogOut() }>Logga ut</button>
             <div className="contact-container">
               <h1 className="profile-name">{ active_user.firstName } { active_user.lastName }</h1>
               <div className="col-1">
@@ -228,7 +236,7 @@ class ProfileForm extends Component {
 export default withRouter(
   connect(
     state => ({
-      active_user: state.active_user
+      active_user: state.active_user,
     }),
-    actions
+    { ...actions, logOut}
   )(ProfileForm));
