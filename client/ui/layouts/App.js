@@ -16,7 +16,7 @@ import Home from '../pages/Home';
 const App = ({ auth }) => (
   <div className="app">
     {
-      auth.isLoggedIn || !!localStorage.getItem('sessionid') ?
+      auth.isLoggedIn ?
         <div>
           <Route component={Header}/>
           <Switch>

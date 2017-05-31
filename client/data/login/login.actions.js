@@ -5,8 +5,8 @@ export const login = sn => {
     axios.get(`https://dev.wital.se/api/autentication?sn=${sn}`)
       .then(res => {
         if ( res.status == 201 ) {
-          dispatch({ type: 'LOGIN', auth: { sessionID: res.data, isLoggedIn: true } });
           localStorage.setItem('sessionid', res.data);
+          dispatch({ type: 'LOGIN', auth: { sessionID: localStorage.getItem('sessionid'), isLoggedIn: true } });
         }
       })
       .catch(e => console.log(e))
