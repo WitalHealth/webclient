@@ -589,6 +589,50 @@ input.toggle-round:checked + label:before {
 input.toggle-round:checked + label:after {
   margin-left: 20px; }
 
+.table-row {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background-color: white; }
+  @media all and (max-width: 620px) {
+    .table-row {
+      display: block; }
+      .table-row [class^='col'] {
+        display: flex;
+        align-items: center;
+        width: 100% !important; }
+        .table-row [class^='col'] .label {
+          display: block !important;
+          min-width: 140px;
+          margin-bottom: 4px; }
+        .table-row [class^='col'] .value {
+          margin-bottom: 4px; } }
+  .table-row.table-header {
+    background-color: #3EB7C1;
+    color: white; }
+    @media all and (max-width: 620px) {
+      .table-row.table-header {
+        display: none; } }
+  .table-row:nth-child(even) {
+    background-color: #fafafa; }
+  .table-row [class^='col'] {
+    margin-right: 8px; }
+    .table-row [class^='col'] .label {
+      display: none; }
+  .table-row .col-1 {
+    width: 40%; }
+  .table-row .col-2 {
+    width: 18%; }
+    .table-row .col-2.warning {
+      color: #ff468d; }
+  .table-row .col-3 {
+    width: 22%; }
+  .table-row .col-4 {
+    width: 20%; }
+
+.unit {
+  font-size: 12px; }
+
 .dev-min-height {
   min-height: 300px; }
 
