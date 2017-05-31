@@ -6,6 +6,8 @@ import orderBadge from './badges/order/reducer';
 import locations from './locations/locations.reducer';
 import active_user from './user/reducer'
 import auth from './login/login.reducer';
+import active_user from './user/reducer';
+import observations from './observations/observations.reducer';
 
 export {
   cart,
@@ -15,5 +17,6 @@ export {
   orderBadge,
   active_user,
   locations,
-  auth
+  auth,
+  observations,
 }
