@@ -1,0 +1,58 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/login-background-grad.png');
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+  .ssn {
+    height: 45px;
+    font-size: 16px;
+    box-sizing: border-box;
+    border: 1px solid $violet;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: white;
+  }
+  .login-button {
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid $violet;
+    background-color: $violet;
+    height: 35px;
+    color: white;
+    cursor: pointer;
+    font-family: "Helvetica Neue", sans-serif;
+    transition: all 300ms;
+    &:hover {
+      background: rgba(167, 100, 152, 0.5);
+      color: white;
+    }
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.login-logo {
+  height: 150px;
+  position: absolute;
+  top: 200px;
+  border: 2px solid rgba(167, 100, 152, 0.1);
+  box-shadow: 1px 1px 1px $violet;
+  border-radius: 300px;
+}
