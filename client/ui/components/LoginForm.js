@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../data/login/login.actions';
 
@@ -9,6 +9,13 @@ class LoginForm extends Component {
   }
 
   render() {
+    const { isLoggedIn } = this.props;
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+
+    if(isLoggedIn) {
+      return <Redirect to={from} />;
+    }
+
     return (
       <div className="login-container">
           <img src="/./images/wital_logo.png" className="login-logo"/>
@@ -34,8 +41,7 @@ class LoginForm extends Component {
 export default withRouter(
   connect(
     state => ({
-      sessionID: state.sessionID,
-      isLoggedIn: state.isLoggedIn
+      isLoggedIn: state.auth.isLoggedIn
     }),
     actions
   )(LoginForm));

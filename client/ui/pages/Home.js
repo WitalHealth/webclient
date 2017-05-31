@@ -1,9 +1,11 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-export default () => (
+const Home = () => (
   <div>
+    <h1>Home</h1>
     <Redirect to="/prover"/>
-    <h1>Start</h1>
   </div>
 );
+
+export default Home;
