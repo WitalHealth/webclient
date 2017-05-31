@@ -1,22 +1,9 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from 'react';
 
 import LoginForm from '../components/LoginForm';
 
-class Login extends Component {
+const Login = () => (
+  <LoginForm />
+);
 
-  render() {
-    return (
-      <div className="page-container">
-        <LoginForm />
-      </div>
-    );
-  }
-}
-
-export default withRouter(
-  connect(
-    null,
-    null
-  )(Login));
+export default Login;

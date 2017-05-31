@@ -12,17 +12,27 @@ class LoginForm extends Component {
     const { isLoggedIn } = this.props;
     const { from } = this.props.location.state || { from: { pathname: '/' } };
 
-    if(isLoggedIn) {
-      return <Redirect to={from} />;
+    if ( isLoggedIn ) {
+      return <Redirect to={from}/>;
     }
 
     return (
       <div className="login-container">
-          <img src="/./images/wital_logo.png" className="login-logo"/>
+        <div className="inner">
+          <div className="login-logo"/>
           <form className="login-form" onSubmit={(e) => this.handleLogin(e)}>
-            <input type="text" id="ssn" pattern=".{12,12}" maxLength="12" className="ssn" placeholder="ååååmmddxxxx" />
-            <input type="submit" className="login-button" value="Login"/>
+            <input
+              type="text"
+              id="ssn"
+              maxLength="12"
+              placeholder="ååååmmddxxxx"
+              title="ååååmmddxxxx"
+              required
+            />
+
+            <button type="submit" className="login-button">Logga in</button>
           </form>
+        </div>
       </div>
     );
   }
@@ -34,7 +44,7 @@ class LoginForm extends Component {
   }
 
   formatSn(sn) {
-    return [sn.slice(0,8), '-', sn.slice(8)].join('');
+    return [ sn.slice(0, 8), '-', sn.slice(8) ].join('');
   }
 }
 
