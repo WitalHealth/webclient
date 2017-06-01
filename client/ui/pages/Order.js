@@ -4,6 +4,6 @@ import DefaultLayout from '../layouts/defaultLayout';
 
 export default () => (
   <DefaultLayout>
-    <Cart/>
+    <Cart btnLabel="Tillbaka till prover" btnLink="/prover"/>
   </DefaultLayout>
 );

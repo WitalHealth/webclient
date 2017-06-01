@@ -7,7 +7,7 @@ import * as actions from '../../data/cart/actions';
 
 const removeIcon = require('../../assets/images/error.png');
 
-const Cart = ({ cart, removeFromCart, isSticky, location }) => {
+const Cart = ({ cart, removeFromCart, isSticky, btnLabel = "Label", btnLink = "/" }) => {
 
   let cartClass = classNames({
     'cart': true,
@@ -19,7 +19,6 @@ const Cart = ({ cart, removeFromCart, isSticky, location }) => {
     cart.map(cartItem => totalPrice += cartItem.price);
     return totalPrice;
   };
-
   return (
     <div
       className={ cartClass }
@@ -58,7 +57,7 @@ const Cart = ({ cart, removeFromCart, isSticky, location }) => {
         <div className="label">Totalt att betala</div>
         <div className="total-price">{ `${totalPrice()}:-` }</div>
       </div>
-      <Link to="/beställning" className="btn block">Till beställning</Link>
+      <Link to={btnLink} className="btn block">{btnLabel}</Link>
     </div>
   )
 };
@@ -69,4 +68,5 @@ export default withRouter(
       cart: state.cart
     }),
     actions
-  )(Cart));
+  )(Cart)
+);
