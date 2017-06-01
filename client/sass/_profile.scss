@@ -118,10 +118,15 @@
 
 .btn-logout {
   border: none;
-  background-color: transparent;
-  color: $violet;
+  background-color: #eaeaea;
+  padding: 8px 12px;
+  color: white;
   cursor: pointer;
   outline: none;
+  transition: all 300ms;
+  &:hover {
+    background-color: $violet;
+  }
 }
 
 #toggle-container {
