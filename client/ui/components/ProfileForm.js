@@ -11,87 +11,6 @@ class ProfileForm extends Component {
     this.state = { disabledUserFields: true, disabledProfileFields: true }
   }
 
-  handleUserSubmit(e) {
-    e.preventDefault();
-    this.setUserValues();
-
-  }
-
-  handleProfileSubmit(e) {
-    e.preventDefault();
-    this.setProfileValues();
-  }
-
-  handleCheckboxSubmit(value, name) {
-    this.setProfileToggleValues(value, name);
-  }
-
-  setUserValues() {
-    let { active_user } = this.props;
-    active_user.email = this.email.value;
-    active_user.phone = this.phone.value;
-
-    this.props.updateActiveUser(active_user);
-    this.setEditableUserFields();
-  }
-
-  setProfileValues() {
-    let { active_user } = this.props;
-
-    active_user.profile.height = Number.parseInt(this.height.value);
-    active_user.profile.weight = Number.parseInt(this.weight.value);
-    active_user.profile.waist = Number.parseInt(this.waist.value);
-
-    this.props.updateActiveUserProfile(active_user);
-    this.setEditableProfileFields();
-  }
-
-  setProfileToggleValues(value, name) {
-    let { active_user } = this.props;
-
-    switch ( name ) {
-      case 'Diabetes':
-        active_user.profile.hasDiabetes = value;
-        break;
-      case 'Astma':
-        active_user.profile.hasAsthma = value;
-        break;
-      case 'Allergi':
-        active_user.profile.hasAllergia = value;
-        break;
-      case 'CAD':
-        active_user.profile.hasCad = value;
-        break;
-      case 'KOL':
-        active_user.profile.hasCarbonDisease = value;
-        break;
-      case 'Depression':
-        active_user.profile.hasDepression = value;
-        break;
-      case 'Rökare':
-        active_user.profile.isSmoker = value;
-        break;
-      default:
-        console.error('no illness by that name', name);
-    }
-
-    this.props.updateActiveUserProfile(active_user);
-  }
-
-  setEditableUserFields() {
-    this.setState({ disabledUserFields: !this.state.disabledUserFields })
-  }
-
-  setEditableProfileFields() {
-    this.setState({ disabledProfileFields: !this.state.disabledProfileFields })
-  }
-
-  handleLogOut() {
-    console.log('log out');
-    this.props.logOut();
-    this.props.history.push('/');
-  }
-
   render() {
     const { active_user } = this.props;
     const illnesses = active_user.profile ?
@@ -131,9 +50,11 @@ class ProfileForm extends Component {
         {
           active_user.id &&
           <div className="cards-container">
-            <button onClick={ () => this.handleLogOut() }>Logga ut</button>
             <div className="contact-container">
-              <h1 className="profile-name">{ active_user.firstName } { active_user.lastName }</h1>
+              <div className="profile-name-container">
+                <h1 className="profile-name">{ active_user.firstName } { active_user.lastName }</h1>
+                <button className="btn-logout" onClick={ () => this.handleLogOut() }>Logga ut</button>
+              </div>
               <div className="col-1">
                 <div className="section-description">
                   <h2>Kontaktuppgifter</h2>
@@ -230,6 +151,87 @@ class ProfileForm extends Component {
       </div>
     );
   }
+
+  handleUserSubmit(e) {
+    e.preventDefault();
+    this.setUserValues();
+
+  }
+
+  handleProfileSubmit(e) {
+    e.preventDefault();
+    this.setProfileValues();
+  }
+
+  handleCheckboxSubmit(value, name) {
+    this.setProfileToggleValues(value, name);
+  }
+
+  setUserValues() {
+    let { active_user } = this.props;
+    active_user.email = this.email.value;
+    active_user.phone = this.phone.value;
+
+    this.props.updateActiveUser(active_user);
+    this.setEditableUserFields();
+  }
+
+  setProfileValues() {
+    let { active_user } = this.props;
+
+    active_user.profile.height = Number.parseInt(this.height.value);
+    active_user.profile.weight = Number.parseInt(this.weight.value);
+    active_user.profile.waist = Number.parseInt(this.waist.value);
+
+    this.props.updateActiveUserProfile(active_user);
+    this.setEditableProfileFields();
+  }
+
+  setProfileToggleValues(value, name) {
+    let { active_user } = this.props;
+
+    switch ( name ) {
+      case 'Diabetes':
+        active_user.profile.hasDiabetes = value;
+        break;
+      case 'Astma':
+        active_user.profile.hasAsthma = value;
+        break;
+      case 'Allergi':
+        active_user.profile.hasAllergia = value;
+        break;
+      case 'CAD':
+        active_user.profile.hasCad = value;
+        break;
+      case 'KOL':
+        active_user.profile.hasCarbonDisease = value;
+        break;
+      case 'Depression':
+        active_user.profile.hasDepression = value;
+        break;
+      case 'Rökare':
+        active_user.profile.isSmoker = value;
+        break;
+      default:
+        console.error('no illness by that name', name);
+    }
+
+    this.props.updateActiveUserProfile(active_user);
+  }
+
+  setEditableUserFields() {
+    this.setState({ disabledUserFields: !this.state.disabledUserFields })
+  }
+
+  setEditableProfileFields() {
+    this.setState({ disabledProfileFields: !this.state.disabledProfileFields })
+  }
+
+  handleLogOut() {
+    console.log('log out');
+    this.props.logOut();
+    this.props.history.push('/');
+  }
 }
 
 
@@ -238,5 +240,5 @@ export default withRouter(
     state => ({
       active_user: state.active_user,
     }),
-    { ...actions, logOut}
+    { ...actions, logOut }
   )(ProfileForm));
