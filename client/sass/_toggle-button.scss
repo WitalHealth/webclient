@@ -43,7 +43,7 @@ input.toggle-round + label:after {
   transition: margin 0.4s;
 }
 input.toggle-round:checked + label:before {
-  background-color: #8ce196;
+  background-color: $dull-cyan;
 }
 input.toggle-round:checked + label:after {
   margin-left: 20px;
