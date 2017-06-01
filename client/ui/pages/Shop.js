@@ -85,6 +85,8 @@ class Shop extends Component {
                 handleRemove={(cartItem) => this.removeFromCart(cartItem)}
                 isSticky={isSticky}
                 ref={(cart) => this.cart = cart}
+                btnLink="/beställning"
+                btnLabel="Till beställning"
               />
             </div>
           </div>
