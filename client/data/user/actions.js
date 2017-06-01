@@ -1,10 +1,16 @@
 import axios from 'axios';
+import { getOrderBadge } from '../badges/order/actions';
 
 export const getActiveUser = () => {
   return dispatch => {
     axios.get(`https://dev.wital.se/api/user/active?sessionid=999`)
       .then(res => {
         dispatch({ type: 'GET_ACTIVE_USER', active_user: res.data });
+        dispatch({
+          type: 'GET_CART',
+          cart: res.data.cart,
+        });
+        dispatch(getOrderBadge(res.data.cart.length));
       })
       .catch(e => console.log(e))
   }
