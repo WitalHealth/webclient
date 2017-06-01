@@ -15,8 +15,29 @@ class Results extends Component {
   render() {
     const {observations} = this.props;
 
+    const testNames = observations.map((observation, i) =>
+      observation.test.custName
+    );
+
+    const uniqueTests = testNames.filter((test, index) => {
+        console.log(testNames.indexOf(test) === index);
+        return testNames.indexOf(test) === index;
+      }
+    );
+
     return (
       <DefaultLayout>
+        <div className="dropdown">
+          <div className="dropbtn">Välj prov</div>
+          <div className="dropdown-content">
+            <div>{
+             uniqueTests.map((uT, i) =>
+              <a key={i} onClick={(e) => this.showTest(e, uT)}>{uT}</a>
+            )
+          }</div>
+          </div>
+        </div>
+
         <div className="table">
           <div className="table-row table-header">
             <div className="col-1">Blodprov</div>
@@ -32,37 +53,42 @@ class Results extends Component {
                 });
 
                 return <div key={i} className="table-row">
-                    <div className="col-1">
-                      <div className="label">Blodprov</div>
-                      <div className="value">{ observation.test.custName }</div>
-                    </div>
-                    <div className={valueClasses}>
-                      <div className="label">Resultat</div>
-                      <div className="value">
-                        { observation.value || 'Inget värde' }
-                        <span className="unit">{ observation.test.unit}</span>
-                      </div>
-                    </div>
-                    <div className="col-3">
-                      <div className="label">Referensintervall</div>
-                      <div className="value">
-                        { observation.min || 0 } - { observation.max }
-                        <span className="unit">{ observation.test.unit}</span>
-                      </div>
-                    </div>
-                    <div className="col-4">
-                      <div className="label">Plats</div>
-                      <div className="value">
-                        { observation.location || 'Ingen plats angiven' }
-                      </div>
+                  <div className="col-1">
+                    <div className="label">Blodprov</div>
+                    <div className="value">{ observation.test.custName }</div>
+                  </div>
+                  <div className={valueClasses}>
+                    <div className="label">Resultat</div>
+                    <div className="value">
+                      { observation.value || 'Inget värde' }
+                      <span className="unit">{ observation.test.unit}</span>
                     </div>
                   </div>
+                  <div className="col-3">
+                    <div className="label">Referensintervall</div>
+                    <div className="value">
+                      { observation.min || 0 } - { observation.max }
+                      <span className="unit">{ observation.test.unit}</span>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <div className="label">Plats</div>
+                    <div className="value">
+                      { observation.location || 'Ingen plats angiven' }
+                    </div>
+                  </div>
+                </div>
               }
             )
           }
         </div>
       </DefaultLayout>
     )
+  }
+
+  showTest(e, tests) {
+    e.preventDefault();
+    console.log('hey', tests);
   }
 }
 
