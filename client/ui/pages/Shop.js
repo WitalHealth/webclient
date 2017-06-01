@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 import Cart from '../components/Cart';
 import ProductPackages from '../components/ProductPackages';
-import ProductSingles from '../components/ProductSingles';
+// import ProductSingles from '../components/ProductSingles';
 import ProductSinglesCommon from '../components/ProductSinglesCommon';
 import DefaultLayout from '../layouts/defaultLayout';
 import LoadingIndicator from '../components/LoadingIndicator';
@@ -62,7 +62,7 @@ class Shop extends Component {
                          to="/prover">Provpaket { searchActive ? `(${filteredPackages.length})` : `(${productPackages.length})` }</NavLink>
                 <NavLink to="/prover/alla">Enskilda
                   Prover { searchActive ? `(${filteredSinglesCommon.length})` : `(${productSinglesCommon.length})` }</NavLink>
-                <NavLink to="/prover/ovanliga">Ovanliga Prover</NavLink>
+                {/*<NavLink to="/prover/ovanliga">Ovanliga Prover</NavLink>*/}
               </div>
               <div className="search-container">
                 <input type="search" placeholder="Hitta prov"
@@ -76,7 +76,7 @@ class Shop extends Component {
                   <Route path={`${match.url}/alla`} render={() => <ProductSinglesCommon
                     products={ searchActive ? filteredSinglesCommon : productSinglesCommon }/> }/>
                 </Switch>
-                <Route path={`${match.url}/ovanliga`} component={ProductSingles}/>
+                {/*<Route path={`${match.url}/ovanliga`} component={ProductSingles}/>*/}
               </LoadingIndicator>
             </div>
 
