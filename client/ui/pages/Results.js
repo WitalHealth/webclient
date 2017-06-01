@@ -1,42 +1,70 @@
-import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
+import moment from 'moment';
 
 import DefaultLayout from '../layouts/defaultLayout';
-import {fetchObservations} from '../../data/observations/observations.actions.js';
+import { fetchObservations } from '../../data/observations/observations.actions.js';
 
 class Results extends Component {
+  state = {
+    selectedObservation: '',
+    dropdownIsActive: false,
+  }
 
   componentWillMount() {
     this.props.fetchObservations();
   }
 
   render() {
-    const {observations} = this.props;
+    const { observations } = this.props;
+    const { dropdownIsActive, selectedObservation } = this.state;
+    let dropdownClasses = classnames({
+      'dropdown-content': true,
+      'active': dropdownIsActive,
+    });
 
-    const testNames = observations.map((observation, i) =>
-      observation.test.custName
-    );
-
-    const uniqueTests = testNames.filter((test, index) => {
-        console.log(testNames.indexOf(test) === index);
-        return testNames.indexOf(test) === index;
-      }
-    );
+    if (dropdownIsActive) {
+      document.body.style.overflow = 'hidden';
+    }
+    else {
+      document.body.style.overflow = 'scroll';
+    }
 
     return (
       <DefaultLayout>
         <div className="dropdown">
-          <div className="dropbtn">Välj prov</div>
-          <div className="dropdown-content">
-            <div>{
-             uniqueTests.map((uT, i) =>
-              <a key={i} onClick={(e) => this.showTest(e, uT)}>{uT}</a>
-            )
-          }</div>
+          <div
+            className="btn-dropdown"
+            onClick={() => this.setState({ dropdownIsActive: !dropdownIsActive })}
+          >
+            {
+              (dropdownIsActive && !selectedObservation) ? 'Visar alla' : (selectedObservation ? selectedObservation : 'Visar alla')
+            }
+          </div>
+          <div className={dropdownClasses}>
+            <div className="inner">
+              <div
+                className="option"
+                onClick={() => this.handleSelectTest('')}
+              >Visa alla
+              </div>
+              {
+                this.handleUniqueTests(observations).map((testName, i) =>
+                  <div
+                    className="option"
+                    onClick={() => this.handleSelectTest(testName)}
+                    key={i}
+                  >{testName}</div>
+                )
+              }
+            </div>
           </div>
         </div>
+        {
+          dropdownIsActive && <div className="click-outside" onClick={() => this.setState({ dropdownIsActive: !dropdownIsActive })}/>
+        }
 
         <div className="table">
           <div className="table-row table-header">
@@ -44,9 +72,10 @@ class Results extends Component {
             <div className="col-2">Resultat</div>
             <div className="col-3">Referensintervall</div>
             <div className="col-4">Plats</div>
+            <div className="col-5">Datum</div>
           </div>
           {
-            observations.map((observation, i) => {
+            this.handleObservations(observations).map((observation, i) => {
                 let valueClasses = classnames({
                   'col-2': true,
                   'warning': !observation.within,
@@ -77,6 +106,12 @@ class Results extends Component {
                       { observation.location || 'Ingen plats angiven' }
                     </div>
                   </div>
+                  <div className="col-5">
+                    <div className="label">Datum</div>
+                    <div className="value">
+                      { moment(observation.obervedAt).locale('se').format('L') }
+                    </div>
+                  </div>
                 </div>
               }
             )
@@ -86,9 +121,30 @@ class Results extends Component {
     )
   }
 
-  showTest(e, tests) {
-    e.preventDefault();
-    console.log('hey', tests);
+  handleUniqueTests(observations) {
+    const testNames = observations.map((observation, i) =>
+      observation.test.custName
+    );
+
+    return testNames.filter((test, index) => testNames.indexOf(test) === index);
+  }
+
+  handleObservations(observations) {
+    const { selectedObservation } = this.state;
+
+    if ( selectedObservation ) {
+      return observations.filter(observation => observation.test.custName === selectedObservation)
+    }
+    else {
+      return observations;
+    }
+  }
+
+  handleSelectTest(testName) {
+    this.setState({
+      selectedObservation: testName,
+      dropdownIsActive: !this.state.dropdownIsActive
+    });
   }
 }
 
@@ -97,6 +153,6 @@ export default withRouter(
     state => ({
       observations: state.observations,
     }),
-    {fetchObservations}
+    { fetchObservations }
   )(Results)
 );

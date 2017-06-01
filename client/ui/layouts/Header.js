@@ -34,7 +34,7 @@ const Header = ({ orderBadge }) => (
         <li>
           <NavLink to="/provstationer">
             <img className="icon" src={mapPinIcon} alt="icon"/>
-            <div>Provstationer</div>
+            <div>Hitta Lab</div>
           </NavLink>
         </li>
         {/*<li>*/}

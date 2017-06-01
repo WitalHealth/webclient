@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { sortObservationsByDate } from './observations.utils';
 
 export function fetchObservations() {
   return dispatch =>
@@ -6,7 +7,7 @@ export function fetchObservations() {
       .then(res => {
         dispatch({
           type: "GET_OBSERVATIONS",
-          observations: res.data.observations
+          observations: sortObservationsByDate(res.data.observations),
         })
       })
       .catch(err => console.error(err.message))

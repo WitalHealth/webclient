@@ -52,7 +52,7 @@ class Locations extends Component {
     return (
       <div className="locations">
         <div className="search-container">
-          <input type="search" placeholder="Hitta din station" onChange={(e) => this.handleSearch(e)}/>
+          <input type="search" placeholder="Hitta lab" onChange={(e) => this.handleSearch(e)}/>
           <div className="icon-search" />
         </div>
         <div style={{ textAlign: 'center' }}>
