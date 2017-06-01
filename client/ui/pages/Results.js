@@ -3,9 +3,10 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import moment from 'moment';
+import { fetchObservations } from '../../data/observations/observations.actions.js';
 
 import DefaultLayout from '../layouts/defaultLayout';
-import { fetchObservations } from '../../data/observations/observations.actions.js';
+import LoadingIndicator from '../components/LoadingIndicator';
 
 class Results extends Component {
   state = {
@@ -25,7 +26,7 @@ class Results extends Component {
       'active': dropdownIsActive,
     });
 
-    if (dropdownIsActive) {
+    if ( dropdownIsActive ) {
       document.body.style.overflow = 'hidden';
     }
     else {
@@ -63,7 +64,8 @@ class Results extends Component {
           </div>
         </div>
         {
-          dropdownIsActive && <div className="click-outside" onClick={() => this.setState({ dropdownIsActive: !dropdownIsActive })}/>
+          dropdownIsActive &&
+          <div className="click-outside" onClick={() => this.setState({ dropdownIsActive: !dropdownIsActive })}/>
         }
 
         <div className="table">
@@ -74,48 +76,53 @@ class Results extends Component {
             <div className="col-4">Plats</div>
             <div className="col-5">Datum</div>
           </div>
-          {
-            this.handleObservations(observations).map((observation, i) => {
-                let valueClasses = classnames({
-                  'col-2': true,
-                  'warning': !observation.within,
-                });
+          <LoadingIndicator
+            message="Hämtar dina provresultat"
+            isLoading={!observations.length}
+          >
+            {
+              this.handleObservations(observations).map((observation, i) => {
+                  let valueClasses = classnames({
+                    'col-2': true,
+                    'warning': !observation.within,
+                  });
 
-                return <div key={i} className="table-row">
-                  <div className="col-1">
-                    <div className="label">Blodprov</div>
-                    <div className="value">{ observation.test.custName }</div>
-                  </div>
-                  <div className={valueClasses}>
-                    <div className="label">Resultat</div>
-                    <div className="value">
-                      { observation.value || 'Inget värde' }
-                      <span className="unit">{ observation.test.unit}</span>
+                  return <div key={i} className="table-row">
+                    <div className="col-1">
+                      <div className="label">Blodprov</div>
+                      <div className="value">{ observation.test.custName }</div>
+                    </div>
+                    <div className={valueClasses}>
+                      <div className="label">Resultat</div>
+                      <div className="value">
+                        { observation.value || 'Inget värde' }
+                        <span className="unit">{ observation.test.unit}</span>
+                      </div>
+                    </div>
+                    <div className="col-3">
+                      <div className="label">Referensintervall</div>
+                      <div className="value">
+                        { observation.min || 0 } - { observation.max }
+                        <span className="unit">{ observation.test.unit}</span>
+                      </div>
+                    </div>
+                    <div className="col-4">
+                      <div className="label">Plats</div>
+                      <div className="value">
+                        { observation.location || 'Ingen plats angiven' }
+                      </div>
+                    </div>
+                    <div className="col-5">
+                      <div className="label">Datum</div>
+                      <div className="value">
+                        { moment(observation.obervedAt).locale('se').format('L') }
+                      </div>
                     </div>
                   </div>
-                  <div className="col-3">
-                    <div className="label">Referensintervall</div>
-                    <div className="value">
-                      { observation.min || 0 } - { observation.max }
-                      <span className="unit">{ observation.test.unit}</span>
-                    </div>
-                  </div>
-                  <div className="col-4">
-                    <div className="label">Plats</div>
-                    <div className="value">
-                      { observation.location || 'Ingen plats angiven' }
-                    </div>
-                  </div>
-                  <div className="col-5">
-                    <div className="label">Datum</div>
-                    <div className="value">
-                      { moment(observation.obervedAt).locale('se').format('L') }
-                    </div>
-                  </div>
-                </div>
-              }
-            )
-          }
+                }
+              )
+            }
+          </LoadingIndicator>
         </div>
       </DefaultLayout>
     )
