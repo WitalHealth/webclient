@@ -13,5 +13,8 @@
   .side-bar {
     min-width: 340px;
     margin-left: 32px;
+    @media all and (max-width: 800px) {
+      display: none;
+    }
   }
 }
