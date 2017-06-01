@@ -3,12 +3,15 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../../data/login/login.actions';
 
+import LoginLoadingIndicator from '../components/LoginLoadingIndicator';
+
 class LoginForm extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    isLoading: false,
   }
 
   render() {
+    const { isLoading } = this.state;
     const { isLoggedIn } = this.props;
     const { from } = this.props.location.state || { from: { pathname: '/' } };
 
@@ -30,7 +33,11 @@ class LoginForm extends Component {
               required
             />
 
-            <button type="submit" className="login-button">Logga in</button>
+            <button type="submit" className="login-button">
+              {
+                isLoading ? <LoginLoadingIndicator/> : 'Logga in'
+              }
+            </button>
           </form>
         </div>
       </div>
@@ -41,6 +48,7 @@ class LoginForm extends Component {
     e.preventDefault();
     var sn = e.target.ssn.value;
     this.props.login(this.formatSn(sn));
+    this.setState({ isLoading: true });
   }
 
   formatSn(sn) {
