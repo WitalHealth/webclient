@@ -1,7 +1,9 @@
 import React from 'react';
+import Cart from '../components/Cart';
+import DefaultLayout from '../layouts/defaultLayout';
 
 export default () => (
-  <div>
-    <h1>Beställning</h1>
-  </div>
+  <DefaultLayout>
+    <Cart/>
+  </DefaultLayout>
 );
