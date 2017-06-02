@@ -1,21 +1,17 @@
 import  './sass/main.scss';
 
-// react
 import React from 'react';
 import {render} from 'react-dom';
-
-// router
 import {ConnectedRouter} from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
-const history = createHistory();
-
-// redux
 import { Provider } from 'react-redux';
 import store from './data/store';
+import initReactFastclick from 'react-fastclick';
+const history = createHistory();
 
-// components
 import App from './ui/layouts/App';
 
+initReactFastclick();
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
