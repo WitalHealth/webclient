@@ -6,13 +6,11 @@ export const getActiveUser = () => {
     axios.get(`https://dev.wital.se/api/user/active?sessionid=999`)
       .then(res => {
         dispatch({ type: 'GET_ACTIVE_USER', active_user: res.data });
-        dispatch({
-          type: 'GET_CART',
-          cart: res.data.cart,
-        });
+        dispatch({ type: 'GET_CART', cart: res.data.cart });
+        dispatch({ type: 'GET_OBSERVATIONS', observations: res.data.observations });
         dispatch(getOrderBadge(res.data.cart.length));
       })
-      .catch(e => console.log(e))
+      .catch(err => console.log(err))
   }
 };
 
@@ -23,7 +21,7 @@ export const updateActiveUser = active_user => {
         dispatch({ type: 'UPDATE_ACTIVE_USER'});
         dispatch(getActiveUser());
       })
-      .catch(e => console.log(e))
+      .catch(err => console.log(err))
   }
 };
 
@@ -35,6 +33,6 @@ export const updateActiveUserProfile = active_user => {
         dispatch({ type: 'UPDATE_ACTIVE_USER_PROFILE'});
         dispatch(getActiveUser());
       })
-      .catch(e => console.log(e))
+      .catch(err => console.log(err))
   }
 };
