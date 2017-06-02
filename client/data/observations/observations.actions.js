@@ -8,7 +8,7 @@ export function fetchObservations() {
         dispatch({
           type: "GET_OBSERVATIONS",
           observations: sortObservationsByDate(res.data.observations),
-        })
+        });
       })
       .catch(err => console.error(err.message))
 }

@@ -1,23 +1,32 @@
 import axios from 'axios';
+import { setCache, getCache, isCacheValid } from '../../utils/cache.util';
+import { sortLabsByCity } from './locations.utils';
+
+const LABS = 'labs';
 
 export const fetchLocations = () => {
-  return dispatch => {
-    axios.get('https://dev.wital.se/api/station')
-      .then(res => {
-        const locations = res.data;
-        locations.sort(function(a, b) {
-          var cityA = a.city.toUpperCase();
-          var cityB = b.city.toUpperCase();
-          if (cityA < cityB) {
-            return -1;
-          }
-          if (cityA > cityB) {
-            return 1;
-          }
-          return 0;
-        });
-        dispatch({ type: 'GET_LOCATIONS', locations })
-      })
-      .catch(err => console.error(err.message));
+  if ( isCacheValid(LABS) ) {
+    console.log('cached labs');
+    return {
+      type: 'GET_LOCATIONS',
+      locations: getCache(LABS),
+    }
   }
+  else {
+    return dispatch => {
+      axios.get('https://dev.wital.se/api/station')
+        .then(res => {
+          const sortedLabs = sortLabsByCity(res.data);
+
+          dispatch({
+            type: 'GET_LOCATIONS',
+            locations: sortedLabs,
+          });
+
+          setCache(LABS, sortedLabs);
+        })
+        .catch(err => console.error(err.message));
+    }
+  }
+
 };

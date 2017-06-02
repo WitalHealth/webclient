@@ -14,7 +14,7 @@ import ProductSinglesCommon from '../components/ProductSinglesCommon';
 import DefaultLayout from '../layouts/defaultLayout';
 import LoadingIndicator from '../components/LoadingIndicator';
 
-import { fetchProductPacks } from '../../data/productPackages/productPackages.actions';
+import { fetchProducts } from '../../data/productPackages/productPackages.actions';
 import { fetchCart } from '../../data/cart/actions';
 import { matchQueryToProduct } from '../../utils/search.util';
 
@@ -27,9 +27,7 @@ class Shop extends Component {
   }
 
   componentDidMount() {
-    // this.props.fetchCart();
-    console.log('fetch products');
-    this.props.fetchProductPacks();
+    this.props.fetchProducts();
   }
 
   handleSearch(e) {
@@ -128,6 +126,6 @@ export default withRouter(
       productSinglesCommon: state.productSinglesCommon,
       productSingles: state.productSingles,
     }),
-    { fetchProductPacks, fetchCart }
+    { fetchProducts, fetchCart }
   )(Shop));
 
