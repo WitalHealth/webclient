@@ -14,10 +14,6 @@ class Results extends Component {
     dropdownIsActive: false,
   }
 
-  componentWillMount() {
-    this.props.fetchObservations();
-  }
-
   render() {
     const { observations } = this.props;
     const { dropdownIsActive, selectedObservation } = this.state;
@@ -26,12 +22,12 @@ class Results extends Component {
       'active': dropdownIsActive,
     });
 
-    if ( dropdownIsActive ) {
-      document.body.style.overflow = 'hidden';
-    }
-    else {
-      document.body.style.overflow = 'scroll';
-    }
+    // if ( dropdownIsActive ) {
+    //   document.body.style.overflow = 'hidden';
+    // }
+    // else {
+    //   document.body.style.overflow = 'scroll';
+    // }
 
     return (
       <DefaultLayout>

@@ -28,6 +28,7 @@ class Shop extends Component {
 
   componentDidMount() {
     // this.props.fetchCart();
+    console.log('fetch products');
     this.props.fetchProductPacks();
   }
 
