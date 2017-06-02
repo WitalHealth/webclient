@@ -20,9 +20,14 @@
     text-align: center;
     font-size: 14px;
     transition: all 300ms;
-    &:hover {
-      background-color: #89527d;
-      color: white;
+    //&:hover {
+    //  background-color: #89527d;
+    //  color: white;
+    //}
+    @media (hover: hover) {
+      &:hover {
+        background-color: blue;
+      }
     }
   }
 }
