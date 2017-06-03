@@ -19,6 +19,5 @@ export function getCache(name) {
 }
 
 export function isCacheValid(name) {
-  console.log(name, !!cookies.get(name));
   return !!cookies.get(name);
 }

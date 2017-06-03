@@ -30,7 +30,6 @@ class LoginForm extends Component {
               maxLength="12"
               placeholder="ååååmmddxxxx"
               title="ååååmmddxxxx"
-              required
             />
 
             <button type="submit" className="login-button">

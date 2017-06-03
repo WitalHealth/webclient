@@ -52,6 +52,14 @@ ul {
   margin: 0;
 }
 
+input {
+  border-radius: 0;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  margin: 0;
+}
+
 table {
   //background-color: rgba(255, 81, 120, 0.16);
   border-spacing: 0;
